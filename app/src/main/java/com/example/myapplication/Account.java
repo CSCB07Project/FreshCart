@@ -1,4 +1,8 @@
 package com.example.myapplication;
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public abstract class Account {
     int userid;
@@ -8,7 +12,7 @@ public abstract class Account {
     String firstName;
     String emailAddress;
 
-    Account(int userid, String username, String password, String firstName, String lastName, String emailAddress) {
+    public Account(int userid, String username, String password, String firstName, String lastName, String emailAddress) {
         this.userid = userid;
         this.username = username;
         this.password = password;
@@ -19,8 +23,8 @@ public abstract class Account {
     }
 
     private void updateToDatabase(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.child("Users").child(userid).setValue(this);
+        DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
+        ref.child("Users").child(String.valueOf(userid)).setValue(this);
     }
 
     protected void changeUsername(String newUsername) {
@@ -33,7 +37,7 @@ public abstract class Account {
         updateToDatabase();
     }
 
-    protected void changeName(String newFirstName, String newLastName) {
+    protected void changeName(String newFirstName, String newLastName){
         firstName = newFirstName;
         lastName = newLastName;
         updateToDatabase();
@@ -42,6 +46,12 @@ public abstract class Account {
     protected void changeEmail(String newEmailAddress) {
         emailAddress = newEmailAddress;
         updateToDatabase();
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.username;
     }
 
     public int getUserid() {
