@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Test
-    public void testBuyerAccount() {
+    public void testBuyerAccount(){
         //Test through buyerClass
         //(Negative ID to prevent conflicts with existing data)
 
