@@ -4,4 +4,8 @@
         android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/robotomedium" />
+    <font
+    android:fontStyle="normal"
+    android:fontWeight="400"
+    android:font="@font/robottobold" />
 </font-family>
