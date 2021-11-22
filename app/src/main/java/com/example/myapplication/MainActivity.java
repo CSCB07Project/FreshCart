@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -13,17 +14,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.introscreen);
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                switchToLoginPage();
+                loadUser();
             }
         }, 4000);
     }
 
-    public void switchToLoginPage(){
-        Intent intent = new Intent(this, LoginActivity.class);
+    public void loadUser(){
+        Intent intent = new Intent(this, LoadingUserActivity.class);
         startActivity(intent);
     }
 }
