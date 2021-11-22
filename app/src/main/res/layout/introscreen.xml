@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00AF55">
+    <ImageView
+        android:id="@+id/introLogo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="220dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cartlogo" />
+
+    <TextView
+        android:id="@+id/introText"
+        android:layout_width="248dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/robotomedium"
+        android:text="Grocery Store"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/introLogo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
