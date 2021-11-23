@@ -13,6 +13,45 @@ public class Order {
         this.userid = userid;
         this.status = status;
     }
+    public int getOrderid() {
+        return orderid;
+    }
+
+    public int getStoreid() {
+        return storeid;
+    }
+
+    public int getProductid() {
+        return productid;
+    }
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
+    }
+
+    public void setStoreid(int storeid) {
+        this.storeid = storeid;
+    }
+
+    public void setProductid(int productid) {
+        this.productid = productid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
     @Override
     public int hashCode(){
         return productid;
