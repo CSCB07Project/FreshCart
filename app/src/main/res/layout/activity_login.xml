@@ -9,31 +9,124 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="468dp"
-        android:layout_height="116dp"
+        android:layout_width="425dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="-1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/loginheaderlarge"
-        tools:layout_editor_absoluteX="-29dp" />
+        app:srcCompat="@drawable/loginheaderlarge" />
 
     <ImageView
         android:id="@+id/loginFooter"
         android:layout_width="428dp"
         android:layout_height="107dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/loginfooter"
-        tools:layout_editor_absoluteX="-9dp" />
+        app:srcCompat="@drawable/loginfooter" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/signinbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="79dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/loginbox" />
-    "
-        tools:layout_editor_absoluteX="-14dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/loginactivity_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signinbox"
+        />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="218dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="78dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@string/username_hint"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/signinbox"
+        app:layout_constraintTop_toTopOf="@+id/signinbox" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signinbox"
+        app:srcCompat="@drawable/loginactivity_password" />
+
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="188dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="158dp"
+        android:layout_marginEnd="68dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/signinbox" />
+
+    <ImageButton
+        android:id="@+id/loginbtn"
+        android:layout_width="184dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toBottomOf="@+id/signinbox"
+        app:layout_constraintStart_toStartOf="@+id/signinbox"
+
+        app:srcCompat="@drawable/loginactivity_loginbutton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="70dp"
+        android:text="@string/loginactivity_or"
+        app:layout_constraintBottom_toBottomOf="@+id/signinbox"
+        app:layout_constraintEnd_toEndOf="@+id/signinbox" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="107dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toBottomOf="@+id/signinbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/loginactivity_registerbtn" />
+
+    <TextView
+        android:id="@+id/invalid_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/loginerror"
+        android:textColor="@color/design_default_color_error"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/signinbox"
+        app:layout_constraintTop_toTopOf="@+id/signinbox" />
 </androidx.constraintlayout.widget.ConstraintLayout>
