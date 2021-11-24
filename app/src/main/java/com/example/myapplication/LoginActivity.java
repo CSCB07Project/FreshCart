@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth mAuth;
     private ImageButton signin;
     private EditText editEmail, editPassword;
-    private Button register;
+    private ImageButton register;
     private ProgressBar progressBar;
     private TextView invalid;
     @Override
@@ -40,6 +40,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editEmail = (EditText) findViewById(R.id.editEmail);
         editPassword = (EditText) findViewById(R.id.editPassword);
 
+        register = (ImageButton) findViewById(R.id.login_registerbtn);
+        register.setOnClickListener(this);
         //progressBar = () // Add in progressbar
 
         mAuth = FirebaseAuth.getInstance();
@@ -47,12 +49,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick (View v) {
         switch(v.getId()){
+            case R.id.login_registerbtn:
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                break;
             case R.id.loginbtn:
                 userLogin();
                 break;
         }
     }
-
     public void userLogin(){
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();

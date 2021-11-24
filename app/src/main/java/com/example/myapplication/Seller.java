@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 public class Seller extends Account{
     Store store;
-    public Seller(int userid, String username, String password, String firstName, String lastName, String emailAddress, Store store) {
+    public Seller(String userid, String username, String password, String firstName, String lastName, String emailAddress, Store store) {
         super(userid, username, password, firstName, lastName, emailAddress);
         this.store = store;
     }

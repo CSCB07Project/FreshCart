@@ -51,8 +51,8 @@
 
     <EditText
         android:id="@+id/editEmail"
-        android:layout_width="218dp"
-        android:layout_height="41dp"
+        android:layout_width="244dp"
+        android:layout_height="47dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="78dp"
         android:background="@null"
@@ -61,7 +61,8 @@
         android:inputType="textPersonName"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/signinbox"
-        app:layout_constraintTop_toTopOf="@+id/signinbox" />
+        app:layout_constraintTop_toTopOf="@+id/signinbox"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -75,17 +76,18 @@
 
     <EditText
         android:id="@+id/editPassword"
-        android:layout_width="188dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="158dp"
-        android:layout_marginEnd="68dp"
+        android:layout_width="226dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="28dp"
         android:background="@null"
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/signinbox" />
+        app:layout_constraintTop_toTopOf="@+id/signinbox"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/loginbtn"
@@ -96,7 +98,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/signinbox"
         app:layout_constraintStart_toStartOf="@+id/signinbox"
 
-        app:srcCompat="@drawable/loginactivity_loginbutton" />
+        app:srcCompat="@drawable/loginactivity_loginbutton"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -109,14 +112,15 @@
         app:layout_constraintEnd_toEndOf="@+id/signinbox" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="107dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginBottom="19dp"
+        android:id="@+id/login_registerbtn"
+        android:layout_width="133dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/signinbox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/loginactivity_registerbtn" />
+        app:srcCompat="@drawable/loginactivity_registerbtn"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/invalid_login"
