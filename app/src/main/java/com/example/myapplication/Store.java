@@ -18,6 +18,30 @@ public class Store {
         this.storeName = name;
         this.storeBannerUrl = url;
     }
+
+    public int getStoreID(){
+        return this.storeID;
+    }
+    public String getStoreDescription(){
+        return this.storeDescription;
+    }
+
+    public String getStoreBannerUrl(){
+        return this.storeBannerUrl;
+    }
+
+    public void setStoreID(int newId){
+        this.storeID = newId;
+    }
+    public void setStoreDescription(String newDesc){
+        this.storeDescription = newDesc;
+    }
+
+    public void setStoreBannerUrl(String newUrl){
+        this.storeBannerUrl = newUrl;
+    }
+
+
 }
 
 
