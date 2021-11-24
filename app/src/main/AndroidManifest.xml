@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".TestDashBoard"
+            android:exported="false" />
             android:name=".RegisterActivity2"
             android:noHistory="true" />
             android:exported="false" />
@@ -23,9 +25,11 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:noHistory="true"
 
             android:exported="true">
             <intent-filter>
