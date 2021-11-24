@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.32760416666666664" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/drawable/ic_launcher_background.xml" value="0.32760416666666664" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_loading_user.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_login.xml" value="0.3046875" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_register2.xml" value="0.25" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/introscreen.xml" value="0.3046875" />
         <entry key="..\:/Users/porom/CSCB07Project/app/src/main/res/font/fontresource.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/porom/CSCB07Project/app/src/main/res/layout/introscreen.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/rana_/CSCB07Project/app/src/main/res/font/fontresource.xml" value="0.28854166666666664" />
