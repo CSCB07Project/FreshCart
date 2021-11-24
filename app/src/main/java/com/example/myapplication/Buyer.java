@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Buyer extends Account{
     HashMap<Product,Integer> cart;
     ArrayList<Order> buyerOrders;
-    public Buyer(int userid, String username, String password, String firstName, String lastName, String emailAddress){
+    public Buyer(String userid, String username, String password, String firstName, String lastName, String emailAddress){
         super(userid, username, password, firstName, lastName, emailAddress);
         cart = new HashMap<Product, Integer>();
         buyerOrders = new ArrayList<Order>();

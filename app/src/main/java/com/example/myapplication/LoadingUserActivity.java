@@ -31,7 +31,7 @@ public class LoadingUserActivity extends AppCompatActivity {
             public void run() {
                 routeHandler(id);
             }
-        }, 2500);
+        }, 50);
 
 
     }
@@ -41,8 +41,13 @@ public class LoadingUserActivity extends AppCompatActivity {
             Checks with the string id, and sends the user to a login page if found to be "none",
             or their respective dashboard otherwise.
          */
+
+        //Debug register
+
+
         if(id.equals("none")){
-            sendToLogin();
+            sendToRegister();
+            //sendToLogin();
         }
         //TO DO IMPLEMENT DASHBOARD ROUTING
     }
@@ -91,6 +96,11 @@ public class LoadingUserActivity extends AppCompatActivity {
 
     public void sendToLogin(){
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void sendToRegister(){
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 }

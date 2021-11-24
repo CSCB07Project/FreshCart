@@ -5,21 +5,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public abstract class Account {
-    int userid;
+    String userid;
     String username;
     String password;
     String lastName;
     String firstName;
     String emailAddress;
 
-    public Account(int userid, String username, String password, String firstName, String lastName, String emailAddress) {
+
+    public Account(String userid, String username, String password, String firstName, String lastName, String emailAddress) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
-        updateToDatabase(); // temporary (write to database need to be implemented in subclasses)
+        updateToDatabase();
     }
 
     private void updateToDatabase(){
@@ -54,7 +55,7 @@ public abstract class Account {
         return this.username;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
@@ -65,4 +66,13 @@ public abstract class Account {
     public String getEmailAddress() {
         return emailAddress;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
 }
