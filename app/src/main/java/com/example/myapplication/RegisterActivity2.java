@@ -76,7 +76,7 @@ public class RegisterActivity2 extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     String userid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
-                    AccountManager new_account = new AccountManager(userid, username,password, firstName, lastName, email);
+                    AccountManager new_account = new AccountManager(userid, username,password, firstName, lastName, email, -1);
                     redirect(0);
                 }
             }

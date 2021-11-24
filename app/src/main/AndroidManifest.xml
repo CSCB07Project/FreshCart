@@ -10,32 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".TestDashBoard"
+            android:name=".AccountDeclaration"
             android:exported="false" />
-            android:name=".RegisterActivity2"
-            android:noHistory="true" />
+        <activity
+            android:name=".SellerDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".TestDashBoard"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
-            android:noHistory="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".RegisterActivity2"
-            android:noHistory="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".LoadingUserActivity"
             android:noHistory="true" />
-            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:noHistory="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".MainActivity"
-            android:noHistory="true"
-
-            android:exported="true">
+            android:exported="true"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

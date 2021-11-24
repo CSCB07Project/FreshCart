@@ -9,7 +9,7 @@ public class Buyer extends Account{
     HashMap<Product,Integer> cart;
     ArrayList<Order> buyerOrders;
     public Buyer(String userid, String username, String password, String firstName, String lastName, String emailAddress){
-        super(userid, username, password, firstName, lastName, emailAddress);
+        super(userid, username, password, firstName, lastName, emailAddress, 1);
         cart = new HashMap<Product, Integer>();
         buyerOrders = new ArrayList<Order>();
     }

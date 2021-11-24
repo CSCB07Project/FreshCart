@@ -11,15 +11,17 @@ public abstract class Account {
     String lastName;
     String firstName;
     String emailAddress;
+    int accountType;
 
 
-    public Account(String userid, String username, String password, String firstName, String lastName, String emailAddress) {
+    public Account(String userid, String username, String password, String firstName, String lastName, String emailAddress, int accountType) {
         this.userid = userid;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
+        this.accountType = accountType;
         updateToDatabase();
     }
 
@@ -75,4 +77,7 @@ public abstract class Account {
         return lastName;
     }
 
+    public int getAccountType() {
+        return accountType;
+    }
 }
