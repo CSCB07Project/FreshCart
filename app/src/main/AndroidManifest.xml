@@ -14,12 +14,15 @@
             android:exported="false" />
         <activity
             android:name=".LoadingUserActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:noHistory="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
