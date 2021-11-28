@@ -10,6 +10,9 @@
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_buyerdashboardaccount.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_buyerdashboardhome.xml" value="0.25" />
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.31157407407407406" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardorders.xml" value="0.31157407407407406" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/introscreen.xml" value="0.31157407407407406" />
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/menu/buyerdashboard_navmenu.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/menu/sellerdashboard_navmenu.xml" value="0.19479166666666667" />
