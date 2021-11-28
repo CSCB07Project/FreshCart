@@ -33,9 +33,9 @@ public class Buyerdashboardhome extends Fragment {
 
     private View myFragmentView;
 
-    private ArrayList<String> mBannerUrl;
+    private ArrayList<String> mBannerUrl = new ArrayList<>();
     private ArrayList<String> mInfo = new ArrayList<>();
-    private ArrayList<Store> stores;
+    private ArrayList<String> mName = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,8 +80,8 @@ public class Buyerdashboardhome extends Fragment {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = myFragmentView.findViewById(R.id.recyclerViewBuyer);
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(mBannerUrl, mInfo, getActivity());
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter( mInfo, getActivity());
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mName,mBannerUrl, mInfo, getActivity());
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter( mInfo, getActivity());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
@@ -91,13 +91,56 @@ public class Buyerdashboardhome extends Fragment {
                              Bundle savedInstanceState) {
         myFragmentView =  inflater.inflate(R.layout.fragment_buyerdashboardhome, container, false);
 
-        mInfo.add("1");
-        mInfo.add("2");
-        mInfo.add("3");
-        mInfo.add("4");
-        mInfo.add("5");
+        FirebaseDatabase.getInstance().getReference("Seller").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot item : snapshot.getChildren()) {
+                    String storeID = "", storeContact = "", storeName = "", storeDescription = "", storeBannerUrl = "", storeAddress = "", storeCountry = "", storeProvince = "", storeCity = "", storePostal = "";
+                    if (item.hasChild("storeID"))
+                        storeID = item.child("storeID").getValue().toString();
+                    if (item.hasChild("storeContact"))
+                        storeContact = item.child("storeContact").getValue().toString();
+                    if (item.hasChild("storeName"))
+                        storeName = item.child("storeName").getValue().toString();
+                    if (item.hasChild("storeDescription"))
+                        storeDescription = item.child("storeDescription").getValue().toString();
+                    if (item.hasChild("storeBannerUrl"))
+                        storeBannerUrl = item.child("storeBannerUrl").getValue().toString();
+                    if (item.hasChild("storeAddress"))
+                        storeAddress = item.child("storeAddress").getValue().toString();
+                    if (item.hasChild("storeCountry"))
+                        storeCountry = item.child("storeCountry").getValue().toString();
+                    if (item.hasChild("storeProvince"))
+                        storeProvince = item.child("storeProvince").getValue().toString();
+                    if (item.hasChild("storeCity"))
+                        storeCity = item.child("storeCity").getValue().toString();
+                    if (item.hasChild("storePostal"))
+                        storePostal = item.child("storePostal").getValue().toString();
+                    /*
+                    String Info = "storeID: " + storeID + "\nstoreContact: " + storeContact + "\nstoreName: " + storeName + "\nstoreDescription: " +
+                            storeDescription + "\nstoreAddress: " + storeAddress + "\nstoreCountry: " + storeCountry + "\nstoreProvince: " + storeProvince +
+                            "\nstoreCity: " + storeCity + "\nstorePostal: " + storePostal;
+
+                     */
+                    mName.add("  " + storeName);
+                    mInfo.add("    " + storeAddress);
+                    mBannerUrl.add(storeBannerUrl);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         initRecyclerView();
         // Inflate the layout for this fragment
         return myFragmentView;
     }
+
+
 }

@@ -33,19 +33,28 @@ public class BuyerDashboard extends AppCompatActivity {
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
+                Fragment frag1 = null;
+                Fragment frag2 = null;
+                Fragment frag3 = null;
+
                 switch (item.getItemId()){
                     case R.id.buyerdashboard_navmenu_home:
-                        selectedFragment = new Buyerdashboardhome();
+                        if(frag1 == null)
+                            frag1 = new Buyerdashboardhome();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.buyerframe, frag1).commit();
                         break;
                     case R.id.buyerdashboard_navmenu_account:
-                        selectedFragment = new Buyerdashboardaccount();
+                        if(frag2 == null)
+                            frag2 = new Buyerdashboardaccount();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.buyerframe, frag2).commit();
                         break;
                     case R.id.buyerdashboard_navmenu_orders:
-                        selectedFragment = new Buyerdashboardorders();
+                        if(frag3 == null)
+                            frag3 = new Buyerdashboardorders();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.buyerframe, frag3).commit();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.buyerframe, selectedFragment).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.buyerframe, selectedFragment).commit();
                 return true;
             }
         });
