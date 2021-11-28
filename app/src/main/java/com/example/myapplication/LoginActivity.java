@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(LoginActivity.this, SellerDashboard.class);
             startActivity(intent);
         }else{
-            Intent intent = new Intent(LoginActivity.this, TestDashBoard.class);
+            Intent intent = new Intent(LoginActivity.this, BuyerDashboard.class);
             startActivity(intent);
         }
     }
