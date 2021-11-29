@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.util.Log;
@@ -77,6 +78,8 @@ public class RegisterActivity2 extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     String userid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
                     AccountManager new_account = new AccountManager(userid, username,password, firstName, lastName, email, -1);
+                    DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
+                    ref.child("Users").child(userid).setValue(new_account);
                     redirect(0);
                 }
             }

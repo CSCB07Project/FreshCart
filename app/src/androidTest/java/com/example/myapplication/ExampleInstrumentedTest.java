@@ -19,8 +19,6 @@ import org.junit.runner.RunWith;
 public class ExampleInstrumentedTest {
     @Test
     public void testBuyerAccount(){
-        //Test through buyerClass
-        //(Negative ID to prevent conflicts with existing data)
 
         assertTrue(true);
     }
