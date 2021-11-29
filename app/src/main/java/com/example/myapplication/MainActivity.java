@@ -9,6 +9,7 @@ import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -29,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 4000);
     }
-
-
-
 
     public void loadUser(){
         Intent intent = new Intent(this, LoadingUserActivity.class);

@@ -22,33 +22,30 @@ public abstract class Account {
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.accountType = accountType;
-        updateToDatabase();
     }
 
+    /*
     private void updateToDatabase(){
         DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
         ref.child("Users").child(String.valueOf(userid)).setValue(this);
     }
+     */ //Deprecated
 
     protected void changeUsername(String newUsername) {
         username = newUsername;
-        updateToDatabase();
     }
 
     protected void changePassword(String oldPassword, String newPassword) {
         if (oldPassword.equals(password)) password = newPassword;
-        updateToDatabase();
     }
 
     protected void changeName(String newFirstName, String newLastName){
         firstName = newFirstName;
         lastName = newLastName;
-        updateToDatabase();
     }
 
     protected void changeEmail(String newEmailAddress) {
         emailAddress = newEmailAddress;
-        updateToDatabase();
     }
 
     @NonNull
