@@ -1,13 +1,13 @@
 package com.example.myapplication;
 
 public class Product {
-    int productID;
+    String productID;
     String productName;
     String productDescription;
     float productPrice;
     Store store;
 
-    public Product(int id, String name, String description, float price, Store market){
+    public Product(String id, String name, String description, float price, Store market){
         this.productID = id;
         this.productName = name;
         this.productDescription = description;
@@ -17,7 +17,7 @@ public class Product {
 
     @Override
     public int hashCode(){
-        return productID;
+        return productID.hashCode();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Product {
         return store == other.store;
     }
 
-    protected void changeProductID(int id){
+    protected void changeProductID(String id){
         productID = id;
     }
 
@@ -69,7 +69,7 @@ public class Product {
         store = market;
     }
 
-    public int getProductID(){
+    public String getProductID(){
         return this.productID;
     }
 
