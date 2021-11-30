@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.LoadingUserActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapter;
 import com.example.myapplication.Store;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -139,7 +143,7 @@ public class Buyerdashboardhome extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("Doesnt work", "Doesnt work");
             }
         });
 
@@ -166,6 +170,11 @@ public class Buyerdashboardhome extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+        FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
+        if(curr == null){
+            Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
+            startActivity(intent);
+        }
         adapter.notifyDataSetChanged();
     }
 
