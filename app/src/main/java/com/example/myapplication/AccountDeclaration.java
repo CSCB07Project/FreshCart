@@ -29,8 +29,6 @@ public class AccountDeclaration extends AppCompatActivity {
         ref.child("Users").child(String.valueOf(userid)).child("accountType").setValue(0);
         Intent intent = new Intent(AccountDeclaration.this, SellerDashboard.class);
         startActivity(intent);
-
-
     }
 
     public void Customer(View view){

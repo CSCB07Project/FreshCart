@@ -84,6 +84,8 @@ public class RegisterActivity2 extends AppCompatActivity {
                 }
             }
         });
+        //Forcefully signout to force first time login
+        mAuth.signOut();
     }
 
     public boolean checkUserInput(String field_firstname, String field_lastname, String field_username){
