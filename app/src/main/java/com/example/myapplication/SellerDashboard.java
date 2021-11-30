@@ -67,4 +67,5 @@ public class SellerDashboard extends AppCompatActivity {
         Intent intent = new Intent(SellerDashboard.this, LoadingUserActivity.class);
         startActivity(intent);
     }
+
 }

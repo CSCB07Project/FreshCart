@@ -58,21 +58,33 @@ public class LoadingUserActivity extends AppCompatActivity {
 
     //Refactor and put into Account function.
     public void getAccountDeclaration(){
-        String uid = mAuth.getCurrentUser().getUid().toString();
-        //Get the usertype from the real time db
-        data = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-        data.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot){
-                String obtained = snapshot.child("accountType").getValue().toString();
-                AccountType = Integer.parseInt(obtained);
-                router(AccountType);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("Error", "Cannot connect to server and set type.");
-            }
-        });
+        String uid = mAuth.getCurrentUser().getUid();
+        if(uid == null || mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(LoadingUserActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }else{
+            uid = uid.toString();
+            data = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+            data.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot){
+                    String obtained = "-1";
+                    try{
+                        obtained = snapshot.child("accountType").getValue().toString();
+                        AccountType = Integer.parseInt(obtained);
+                        router(AccountType);
+                    }catch(Exception e){
+                        FirebaseAuth.getInstance().signOut();
+                        getAccountDeclaration();
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("Error", "Cannot connect to server and set type.");
+                }
+            });
+        }
     }
 
     public void router(int type){
