@@ -35,8 +35,11 @@ public class Buyerdashboardhome extends Fragment {
 
     private ArrayList<String> mBannerUrl = new ArrayList<>();
     private ArrayList<String> mInfo = new ArrayList<>();
+    private ArrayList<String> eInfo = new ArrayList<>();
     private ArrayList<String> mName = new ArrayList<>();
-    //private ArrayList<String> eInfo = new ArrayList<>();
+    private ArrayList<String> mId = new ArrayList<>();
+
+    RecyclerViewAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,37 +85,23 @@ public class Buyerdashboardhome extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-    }
-
-    private void initRecyclerView(){
-        RecyclerView recyclerView = myFragmentView.findViewById(R.id.recyclerViewBuyer);
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(eInfo, mName,mBannerUrl, mInfo, getActivity());
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mName,mBannerUrl, mInfo, getActivity());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        myFragmentView =  inflater.inflate(R.layout.fragment_buyerdashboardhome, container, false);
-
-        FirebaseDatabase.getInstance().getReference("Seller").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Seller").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot item : snapshot.getChildren()) {
                     String storeName = "", storeBannerUrl = "", storeAddress = "";
-                    //String storeID = "", storeContact = "",  storeDescription = "",  storeCountry = "", storeProvince = "", storeCity = "", storePostal = "";
+                    String storeContact = "", storeDescription = "", storeCountry = "", storeProvince = "", storeCity = "", storePostal = "";
+                    String storeID = "";
                     if (item.hasChild("storeName"))
                         storeName = item.child("storeName").getValue().toString();
                     if (item.hasChild("storeAddress"))
                         storeAddress = item.child("storeAddress").getValue().toString();
                     if (item.hasChild("storeBannerUrl"))
                         storeBannerUrl = item.child("storeBannerUrl").getValue().toString();
-                    /*
                     if (item.hasChild("storeID"))
                         storeID = item.child("storeID").getValue().toString();
+
                     if (item.hasChild("storeContact"))
                         storeContact = item.child("storeContact").getValue().toString();
 
@@ -126,14 +115,20 @@ public class Buyerdashboardhome extends Fragment {
                         storeCity = item.child("storeCity").getValue().toString();
                     if (item.hasChild("storePostal"))
                         storePostal = item.child("storePostal").getValue().toString();
-                     */
-                    /*
-                    String xInfo = "storeID: " + storeID + "\nstoreContact: " + storeContact + "\nstoreName: " + storeName + "\nstoreDescription: " +
-                            storeDescription + "\nstoreAddress: " + storeAddress + "\nstoreCountry: " + storeCountry + "\nstoreProvince: " + storeProvince +
-                            "\nstoreCity: " + storeCity + "\nstorePostal: " + storePostal;
+
+                    String xInfo =
+                            "Store ID:                   " + storeID +
+                                    "\nStore Name:            " + storeName +
+                                    "\nStore Description:   " + storeDescription +
+                                    "\nStore Contact:         " + storeContact +
+                                    "\nStore Address:        " + storeAddress +
+                                    "\nStore Postal:            " + storePostal +
+                                    "\nStore City:                " + storeCity +
+                                    "\nStore Province:       " + storeProvince +
+                                    "\nStore Country:         " + storeCountry;
                      eInfo.add(xInfo);
 
-                     */
+                    mId.add(storeID);
                     mName.add("  " + storeName);
                     mInfo.add("    " + storeAddress);
                     mBannerUrl.add(storeBannerUrl);
@@ -148,33 +143,37 @@ public class Buyerdashboardhome extends Fragment {
             }
         });
 
+    }
+
+    private void initRecyclerView(){
+        RecyclerView recyclerView = myFragmentView.findViewById(R.id.recyclerViewBuyer);
+        adapter = new RecyclerViewAdapter(mId, mName,mBannerUrl, mInfo,eInfo, getActivity());
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(mName,mBannerUrl, mInfo, getActivity());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        myFragmentView =  inflater.inflate(R.layout.fragment_buyerdashboardhome, container, false);
+
         initRecyclerView();
         // Inflate the layout for this fragment
         return myFragmentView;
     }
 
-    /*
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putStringArrayList("mInfo",mInfo);
-        outState.putStringArrayList("mName",mName);
-        outState.putStringArrayList("mBannerUrl",mBannerUrl);
-
-        // Save near location
-        //outState.putParcelable(KEY_NEAR_LOCATION, mNearLocation);
-        //outState.putLong(KEY_SELECTED_TIME_IN_MILLIS, mSelectedTimeInMillis);
+    public void onResume(){
+        super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
-    public void onViewStateRestored( Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        mBannerUrl = savedInstanceState.getStringArrayList("mBannerUrl");
-        mInfo = savedInstanceState.getStringArrayList("mInfo");
-        mName = savedInstanceState.getStringArrayList("mName");
+    public void onStart(){
+        super.onStart();
+        adapter.notifyDataSetChanged();
     }
 
-     */
 
 }

@@ -16,11 +16,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.myapplication.BuyerDashboard;
+import com.example.myapplication.ChangeEmail;
+import com.example.myapplication.ChangeName;
+import com.example.myapplication.ChangePassword;
+import com.example.myapplication.ChangeUsername;
 import com.example.myapplication.LoadingUserActivity;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapter;
 import com.example.myapplication.Store;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,6 +94,53 @@ public class Buyerdashboardaccount extends Fragment {
             @Override
             public void onClick(View v) {
                 signout();
+            }
+        });
+
+        FloatingActionButton btn1 = (FloatingActionButton) view.findViewById(R.id.bUsername);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangeUsername.class);
+                startActivity(intent);
+
+            }
+        });
+
+        FloatingActionButton btn2 = (FloatingActionButton) view.findViewById(R.id.bName);
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangeName.class);
+                startActivity(intent);
+
+            }
+        });
+
+        FloatingActionButton btn3 = (FloatingActionButton) view.findViewById(R.id.bEM);
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangeEmail.class);
+                startActivity(intent);
+
+            }
+        });
+        FloatingActionButton btn4 = (FloatingActionButton) view.findViewById(R.id.bPS);
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangePassword.class);
+                startActivity(intent);
+
             }
         });
         return view;

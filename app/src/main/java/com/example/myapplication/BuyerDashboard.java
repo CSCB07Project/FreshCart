@@ -67,10 +67,5 @@ public class BuyerDashboard extends AppCompatActivity {
             return false;
         }
     };
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Intent intent = new Intent(BuyerDashboard.this, LoadingUserActivity.class);
-        startActivity(intent);
-    }
+
 }
