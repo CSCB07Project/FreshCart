@@ -12,18 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".CreateStore"
+            android:exported="false" />
+        <activity
             android:name=".AccountDeclaration"
             android:exported="false" />
         <activity
             android:name=".SellerDashboard"
             android:exported="false" />
-
         <activity
             android:name=".BuyerDashboard"
             android:exported="false" />
-
-
-
         <activity
             android:name=".RegisterActivity"
             android:exported="false"

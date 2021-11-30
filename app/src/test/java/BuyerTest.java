@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class BuyerTest {
     @Test
     public void testChangeUsername(){
-        Buyer test = new Buyer("1", "test","test","test","test","test");
+        Buyer test = new Buyer("1", "test","test","test","test");
         assertTrue(true);
     }
 

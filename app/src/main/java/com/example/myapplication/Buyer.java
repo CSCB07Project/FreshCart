@@ -6,12 +6,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Buyer extends Account{
-    HashMap<Product,Integer> cart;
-    ArrayList<Order> buyerOrders;
-    public Buyer(String userid, String username, String password, String firstName, String lastName, String emailAddress){
-        super(userid, username, password, firstName, lastName, emailAddress, 1);
-        cart = new HashMap<Product, Integer>();
-        buyerOrders = new ArrayList<Order>();
+
+    HashMap<String,Integer> cart;
+    ArrayList<String> buyerOrders;
+    public Buyer(String userid, String username, String firstName, String lastName, String emailAddress){
+        super(userid, username, firstName, lastName, emailAddress, 1);
+        cart = new HashMap<String, Integer>();
+        buyerOrders = new ArrayList<String>();
+
+        //Required o/w firebase will not add fields during account generation.
+        cart.put("-1", -1);
+        buyerOrders.add("-1");
     }
 
 
@@ -21,4 +26,14 @@ public class Buyer extends Account{
     public String toString() {
         return super.toString();
     }
+
+    public HashMap<String,Integer> getCart() {
+        return cart;
+    }
+
+    public ArrayList<String> getBuyerOrders() {
+        return buyerOrders;
+    }
+
+
 }

@@ -18,6 +18,12 @@ import android.view.MenuItem;
 
 
 public class SellerDashboard extends AppCompatActivity {
+    Fragment fhome = new Sellerdashboardhome();
+    Fragment faccount = new Sellerdashboardaccount();
+    Fragment forders = new Sellerdashboardorders();
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment curr = fhome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,27 +31,32 @@ public class SellerDashboard extends AppCompatActivity {
         setContentView(R.layout.activity_seller_dashboard);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.sellerdashboard_nav);
-
         //Set current frame
-        getSupportFragmentManager().beginTransaction().replace(R.id.sellerframe, new Sellerdashboardhome()).commit();
+
+        fm.beginTransaction().add(R.id.sellerframe,faccount).hide(faccount).commit();
+        fm.beginTransaction().add(R.id.sellerframe,forders).hide(forders).commit();
+        fm.beginTransaction().add(R.id.sellerframe,fhome).commit();
 
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.sellerdashboard_navmenu_home:
-                        selectedFragment = new Sellerdashboardhome();
-                        break;
+                        fm.beginTransaction().hide(curr).show(fhome).commit();
+                        curr = fhome;
+                        return true;
+
                     case R.id.sellerdashboard_navmenu_account:
-                        selectedFragment = new Sellerdashboardaccount();
-                        break;
+                        fm.beginTransaction().hide(curr).show(faccount).commit();
+                        curr = faccount;
+                        return true;
+
                     case R.id.sellerdashboard_navmenu_orders:
-                        selectedFragment = new Sellerdashboardorders();
-                        break;
+                        fm.beginTransaction().hide(curr).show(forders).commit();
+                        curr = forders;
+                        return true;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.sellerframe, selectedFragment).commit();
-                return true;
+                return false;
             }
         });
 
