@@ -23,6 +23,33 @@
         <activity
             android:name=".BuyerDashboard"
             android:exported="false" />
+
+        <activity
+            android:name=".ChangeUsername"
+            android:exported="false" />
+
+        <activity
+            android:name=".ChangeName"
+            android:exported="false" />
+        <activity
+            android:name=".ChangeEmail"
+            android:exported="false" />
+
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+
+        <activity
+            android:name=".MoreInfoStore"
+            android:exported="false" />
+
+        <activity android:name=".PInfo"
+            android:parentActivityName=".BuyerDashboard">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
