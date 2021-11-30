@@ -68,4 +68,11 @@ public class BuyerDashboard extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Intent intent = new Intent(BuyerDashboard.this, LoadingUserActivity.class);
+        startActivity(intent);
+    }
+
 }
