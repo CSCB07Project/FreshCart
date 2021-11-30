@@ -120,4 +120,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Intent intent = new Intent(LoginActivity.this, LoadingUserActivity.class);
+        startActivity(intent);
+    }
 }

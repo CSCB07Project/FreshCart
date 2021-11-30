@@ -77,4 +77,5 @@ public abstract class Account {
     public int getAccountType() {
         return accountType;
     }
+    public String getPassword(){return this.password;}
 }

@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.myapplication.LoadingUserActivity;
+import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +21,8 @@ import com.example.myapplication.R;
  * create an instance of this fragment.
  */
 public class Sellerdashboardaccount extends Fragment {
-
+    private FirebaseAuth auth;
+    private Button signout;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +67,20 @@ public class Sellerdashboardaccount extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sellerdashboardaccount, container, false);
+        View view =  inflater.inflate(R.layout.fragment_sellerdashboardaccount, container, false);
+        auth = FirebaseAuth.getInstance();
+        signout = (Button) view.findViewById(R.id.signout_sellerdash);
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signout();
+            }
+        });
+        return view;
+    }
+    public void signout(){
+        auth.signOut();
+        Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
+        startActivity(intent);
     }
 }

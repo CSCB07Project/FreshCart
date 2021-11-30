@@ -1,5 +1,7 @@
 package com.example.myapplication.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.myapplication.BuyerDashboard;
+import com.example.myapplication.LoadingUserActivity;
+import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapter;
 import com.example.myapplication.Store;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +36,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class Buyerdashboardaccount extends Fragment {
-
+    private FirebaseAuth auth;
+    private Button signout_button;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,6 +82,27 @@ public class Buyerdashboardaccount extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buyerdashboardaccount, container, false);
+        auth = FirebaseAuth.getInstance();
+        View view = inflater.inflate(R.layout.fragment_buyerdashboardaccount, container, false);
+        signout_button = (Button) view.findViewById(R.id.signout_userdash);
+        signout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signout();
+            }
+        });
+        return view;
     }
+
+
+
+    public void signout(){
+        auth.signOut();
+        Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
+
+        startActivity(intent);
+    }
+
+
+
 }
