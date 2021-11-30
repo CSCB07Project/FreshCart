@@ -16,6 +16,7 @@
             android:exported="false" />
         <activity
             android:name=".AccountDeclaration"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".SellerDashboard"
@@ -26,17 +27,21 @@
 
         <activity
             android:name=".ChangeUsername"
+            android:noHistory="true"
             android:exported="false" />
 
         <activity
             android:name=".ChangeName"
+            android:noHistory="true"
             android:exported="false" />
         <activity
             android:name=".ChangeEmail"
+            android:noHistory="true"
             android:exported="false" />
 
         <activity
             android:name=".ChangePassword"
+            android:noHistory="true"
             android:exported="false" />
 
         <activity
