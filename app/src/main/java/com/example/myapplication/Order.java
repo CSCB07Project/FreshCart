@@ -1,31 +1,31 @@
 package com.example.myapplication;
 
 public class Order {
-    int orderid;
-    int storeid;
-    int productid;
-    int userid;
+    String orderid;
+    String storeid;
+    String productid;
+    String userid;
     int status;
-    public Order(int orderid, int storeid, int productid, int userid, int status){
+    public Order(String orderid, String storeid, String productid, String userid, int status){
         this.orderid = orderid;
         this.storeid = storeid;
         this.productid = productid;
         this.userid = userid;
         this.status = status;
     }
-    public int getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
 
-    public int getStoreid() {
+    public String getStoreid() {
         return storeid;
     }
 
-    public int getProductid() {
+    public String getProductid() {
         return productid;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
@@ -33,19 +33,19 @@ public class Order {
         return status;
     }
 
-    public void setOrderid(int orderid) {
+    public void setOrderid(String orderid) {
         this.orderid = orderid;
     }
 
-    public void setStoreid(int storeid) {
+    public void setStoreid(String storeid) {
         this.storeid = storeid;
     }
 
-    public void setProductid(int productid) {
+    public void setProductid(String productid) {
         this.productid = productid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
@@ -54,7 +54,7 @@ public class Order {
     }
     @Override
     public int hashCode(){
-        return productid;
+        return productid.hashCode();
     }
     @Override
     public boolean equals(Object obj){

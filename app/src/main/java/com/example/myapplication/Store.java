@@ -18,8 +18,10 @@ public class Store {
     String storeCity;
     String storePostal;
 
-    HashMap<Integer, Order> storeOrders = new HashMap<>();
-    HashMap<Integer,Product> products = new HashMap<>();
+    //HashMap<Integer, Order> storeOrders = new HashMap<>();
+    ArrayList<String> storeOrders = new ArrayList<String>();
+    //HashMap<Integer,Product> products = new HashMap<>();
+    ArrayList<String> products = new ArrayList<String>();
     HashMap<String,String> openingHours = new HashMap<>();
 
     public Store(int id, String name, String description, String url){
@@ -30,7 +32,7 @@ public class Store {
     }
 
     public void addProduct(Product p){
-        products.put(p.productID, p);
+        products.add(p.productID);
     }
 
     public void removeProduct(Product p){
@@ -38,7 +40,7 @@ public class Store {
     }
 
     public void addOrder(Order o){
-        storeOrders.put(o.orderid, o);
+        storeOrders.add(o.orderid);
     }
 
     public void removeOrder(Order o){
