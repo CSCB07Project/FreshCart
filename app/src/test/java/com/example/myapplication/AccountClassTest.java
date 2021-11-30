@@ -9,18 +9,10 @@ Test every function in the AccountClass
 public class AccountClassTest {
     @Test
     public void testChangeFunctions(){
-        Buyer test = new Buyer("1", "Test", "Test", "Test", "Test", "Test");
+        Buyer test = new Buyer("1", "Test", "Test", "Test", "Test");
         //Test change username
         test.changeUsername("NewUsername");
         assertEquals("NewUsername", test.getUsername());
-
-        //test change password with incorrect old password
-        test.changePassword("test", "incorrect");
-        assertEquals("Test", test.getPassword());
-
-        //test change password with correct old password
-        test.changePassword("Test", "correct");
-        assertEquals("correct", test.getPassword());
 
         //test change name
         test.changeName("firstname", "lastname");

@@ -7,17 +7,15 @@ import com.google.firebase.database.FirebaseDatabase;
 public abstract class Account {
     String userid;
     String username;
-    String password;
     String lastName;
     String firstName;
     String emailAddress;
     int accountType;
 
 
-    public Account(String userid, String username, String password, String firstName, String lastName, String emailAddress, int accountType) {
+    public Account(String userid, String username, String firstName, String lastName, String emailAddress, int accountType) {
         this.userid = userid;
         this.username = username;
-        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -35,9 +33,6 @@ public abstract class Account {
         username = newUsername;
     }
 
-    protected void changePassword(String oldPassword, String newPassword) {
-        if (oldPassword.equals(password)) password = newPassword;
-    }
 
     protected void changeName(String newFirstName, String newLastName){
         firstName = newFirstName;
@@ -77,5 +72,5 @@ public abstract class Account {
     public int getAccountType() {
         return accountType;
     }
-    public String getPassword(){return this.password;}
+
 }
