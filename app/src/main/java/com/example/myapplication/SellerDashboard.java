@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class SellerDashboard extends AppCompatActivity {
@@ -65,6 +66,11 @@ public class SellerDashboard extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Intent intent = new Intent(SellerDashboard.this, LoadingUserActivity.class);
+        startActivity(intent);
+    }
+
+    public void createStore(View view){
+        Intent intent = new Intent(SellerDashboard.this, CreateNewStore.class);
         startActivity(intent);
     }
 

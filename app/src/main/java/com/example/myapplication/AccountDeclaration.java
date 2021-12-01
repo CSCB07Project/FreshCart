@@ -27,6 +27,7 @@ public class AccountDeclaration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_declaration);
 
+
         mAuth = FirebaseAuth.getInstance();
         userid = mAuth.getCurrentUser().getUid().toString();
     }

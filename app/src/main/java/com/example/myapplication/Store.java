@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Store {
-    int storeID;
+    String storeID;
     int storeContact;
     String storeName;
     String storeDescription;
@@ -24,11 +24,16 @@ public class Store {
     ArrayList<String> products = new ArrayList<String>();
     HashMap<String,String> openingHours = new HashMap<>();
 
-    public Store(int id, String name, String description, String url){
+    public Store(String id, String name, String description, String bannerurl, String address, String country, String province, String city, String postal){
         this.storeID = id;
-        this.storeDescription = description;
         this.storeName = name;
-        this.storeBannerUrl = url;
+        this.storeDescription = description;
+        this.storeBannerUrl = bannerurl;
+        this.storeAddress = address;
+        this.storeCountry = country;
+        this.storeProvince = province;
+        this.storeCity = city;
+        this.storePostal = postal;
     }
 
     public void addProduct(Product p){
@@ -51,7 +56,9 @@ public class Store {
 
     public void removeHours(String date) { openingHours.remove(date); }
 
-    public int getStoreID(){
+
+
+    public String getStoreID(){
         return this.storeID;
     }
     public int getStoreContact(){ return this.storeContact; }
@@ -68,7 +75,7 @@ public class Store {
     public String getStoreCity() { return this.storeCity; }
     public String getStorePostal() { return this.storePostal; }
 
-    public void setStoreID(int newId){
+    public void setStoreID(String newId){
         this.storeID = newId;
     }
     public void setStoreContact(int contactNum) { this.storeContact = contactNum; }
