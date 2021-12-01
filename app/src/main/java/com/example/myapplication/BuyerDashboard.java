@@ -16,6 +16,8 @@ import com.example.myapplication.fragments.Buyerdashboardhome;
 import com.example.myapplication.fragments.Buyerdashboardorders;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import android.view.MenuItem;
 
@@ -36,7 +38,6 @@ public class BuyerDashboard extends AppCompatActivity {
         navigation.setOnItemSelectedListener(mOnNavigationItemSelectedListener);
 
         // add frag
-
         fm.beginTransaction().add(R.id.buyerframe,fragA,"A").hide(fragA).commit();
         fm.beginTransaction().add(R.id.buyerframe,fragO,"O").hide(fragO).commit();
         fm.beginTransaction().add(R.id.buyerframe,fragH,"H").commit();
@@ -75,6 +76,29 @@ public class BuyerDashboard extends AppCompatActivity {
         startActivity(intent);
     }
     */
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
+        if(curr == null){
+            Intent intent = new Intent(BuyerDashboard.this, LoadingUserActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
 
 }

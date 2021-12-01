@@ -170,6 +170,7 @@ public class Buyerdashboardhome extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+
         FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
         if(curr == null){
             Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
@@ -178,11 +179,13 @@ public class Buyerdashboardhome extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+
+
     @Override
     public void onStart(){
         super.onStart();
-        adapter.notifyDataSetChanged();
-    }
 
+        //adapter.notifyDataSetChanged();
+    }
 
 }

@@ -14,6 +14,7 @@ import com.example.myapplication.LoadingUserActivity;
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,4 +84,21 @@ public class Sellerdashboardaccount extends Fragment {
         Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
+        if(curr == null){
+            Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+    }
+
+
 }
