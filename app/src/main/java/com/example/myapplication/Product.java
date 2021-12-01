@@ -6,9 +6,9 @@ public class Product {
     String productDescription;
     String productImageUrl;
     float productPrice;
-    Store store;
+    String store;
 
-    public Product(String id, String name, String description, float price, Store market, String url){
+    public Product(String id, String name, String description, float price, String market, String url){
         this.productID = id;
         this.productName = name;
         this.productDescription = description;
@@ -70,7 +70,7 @@ public class Product {
         productPrice = price;
     }
 
-    protected void changeStore(Store market){
+    protected void changeStore(String market){
         store = market;
     }
 
@@ -94,7 +94,7 @@ public class Product {
         return this.productPrice;
     }
 
-    public Store getStore(){
+    public String getStore(){
         return this.store;
     }
 
