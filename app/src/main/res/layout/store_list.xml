@@ -2,26 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_store_layout"
     android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_margin="10dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
-    android:id="@+id/parent_store_layout">
+    android:background="#8C8B8B">
 
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_store"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:translationY="5dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/banner"
+        android:id="@+id/db_banner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:rotationX="0"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toTopOf="@+id/sotrename"
+        android:src="@drawable/samplegrocerystore"
+        app:layout_constraintBottom_toTopOf="@+id/storename_dash"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/sotrename"
+        android:id="@+id/storename_dash"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
@@ -29,11 +41,11 @@
         android:text="Name"
         android:textSize="25dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/info"
+        app:layout_constraintBottom_toTopOf="@+id/store_db_info"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/info"
+        android:id="@+id/store_db_info"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
@@ -44,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabStore"
+        android:id="@+id/store_db_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -59,3 +71,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

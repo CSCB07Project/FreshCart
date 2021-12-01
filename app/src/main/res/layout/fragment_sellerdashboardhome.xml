@@ -14,19 +14,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/AddStoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/robotomedium"
+            android:letterSpacing="0.05"
+            android:text="Add a new store"
+            android:textColor="#979797"
+            android:textSize="28sp"
+            android:translationX="25sp"
+            android:translationY="60sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.358"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_conversion_absoluteHeight="32dp"
+            tools:layout_conversion_absoluteWidth="99dp" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/addNewStoreItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
+            android:onClick="createStore"
             android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="#5E003E"
+            app:backgroundTint="#FFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.926"
+            app:layout_constraintHorizontal_bias="0.89"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.882" />
+            app:layout_constraintVertical_bias="0.918" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -37,10 +59,10 @@
             android:src="@drawable/sellerdashboardwave"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.906" />
+            app:layout_constraintVertical_bias="0.966" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

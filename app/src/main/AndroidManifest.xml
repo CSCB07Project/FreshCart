@@ -12,44 +12,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".CreateStore"
+            android:name=".CreateNewStore"
             android:exported="false" />
         <activity
             android:name=".AccountDeclaration"
-            android:noHistory="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".SellerDashboard"
             android:exported="false" />
         <activity
             android:name=".BuyerDashboard"
             android:exported="false" />
-
         <activity
             android:name=".ChangeUsername"
-            android:noHistory="true"
-            android:exported="false" />
-
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".ChangeName"
-            android:noHistory="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".ChangeEmail"
-            android:noHistory="true"
-            android:exported="false" />
-
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".ChangePassword"
-            android:noHistory="true"
-            android:exported="false" />
-
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".MoreInfoStore"
             android:exported="false" />
-
-        <activity android:name=".PInfo"
+        <activity
+            android:name=".PInfo"
             android:parentActivityName=".BuyerDashboard">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
