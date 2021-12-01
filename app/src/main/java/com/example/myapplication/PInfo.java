@@ -40,6 +40,7 @@ public class PInfo extends AppCompatActivity {
     ArrayList<String> mImageUrls = new ArrayList<>();
     ArrayList<String> mPrice = new ArrayList<>();
     ArrayList<String> mImages = new ArrayList<>();
+    ArrayList<String> mDesc = new ArrayList<>();
     RecyclerViewAdapter2 adapter;
 
     @Override
@@ -123,18 +124,62 @@ public class PInfo extends AppCompatActivity {
     private void initImageBitmaps(){
         mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
         mImages.add("Orange");
+        mDesc.add("A bag of 12 oranges");
         mPrice.add("5");
 
         mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
         mImages.add("Apple");
+        mDesc.add("A bag of 12 apples");
         mPrice.add("6");
 
         mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
         mImages.add("Banana");
+        mDesc.add("A bag of 12 bananas");
         mPrice.add("7");
 
         mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
         mImages.add("Lemon");
+        mDesc.add("A bag of 12 lemons");
+        mPrice.add("8");
+
+        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        mImages.add("Orange");
+        mDesc.add("A bag of 12 oranges");
+        mPrice.add("5");
+
+        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
+        mImages.add("Apple");
+        mDesc.add("A bag of 12 apples");
+        mPrice.add("6");
+
+        mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
+        mImages.add("Banana");
+        mDesc.add("A bag of 12 bananas");
+        mPrice.add("7");
+
+        mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
+        mImages.add("Lemon");
+        mDesc.add("A bag of 12 lemons");
+        mPrice.add("8");
+
+        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        mImages.add("Orange");
+        mDesc.add("A bag of 12 oranges");
+        mPrice.add("5");
+
+        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
+        mImages.add("Apple");
+        mDesc.add("A bag of 12 apples");
+        mPrice.add("6");
+
+        mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
+        mImages.add("Banana");
+        mDesc.add("A bag of 12 bananas");
+        mPrice.add("7");
+
+        mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
+        mImages.add("Lemon");
+        mDesc.add("A bag of 12 lemons");
         mPrice.add("8");
 
         initRecyclerView();
@@ -142,7 +187,7 @@ public class PInfo extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, this);
+        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }

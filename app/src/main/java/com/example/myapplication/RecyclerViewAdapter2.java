@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.w3c.dom.Text;
+
 import java.util.*;
 
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder2>{
@@ -24,13 +26,15 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mPrice = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mDesc = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, Context Context) {
+    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc, Context Context) {
         this.mImageNames = ImageNames;
         this.mImages = Images;
         this.mPrice = Price;
         this.mContext = Context;
+        this.mDesc = Desc;
     }
 
     @NonNull
@@ -50,6 +54,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
         holder.name.setText(mImageNames.get(position));
         holder.price.setText("$ " + mPrice.get(position));
+        holder.desc.setText(mDesc.get(position));
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +78,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         ImageView image;
         TextView name;
         TextView price;
+        TextView desc;
         ConstraintLayout parentLayout;
 
         public ViewHolder2(@NonNull View itemView) {
@@ -80,6 +86,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
             image = itemView.findViewById(R.id.productimage);
             name = itemView.findViewById(R.id.storename);
             price = itemView.findViewById(R.id.productprice);
+            desc = itemView.findViewById(R.id.productdesc);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
