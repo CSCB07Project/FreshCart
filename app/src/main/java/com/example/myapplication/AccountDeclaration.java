@@ -36,7 +36,7 @@ public class AccountDeclaration extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
         UpdateAccountType(0);
         ref.child("Users").child(String.valueOf(userid)).child("accountType").setValue(0);
-        Intent intent = new Intent(AccountDeclaration.this, SellerDashboard.class);
+        Intent intent = new Intent(AccountDeclaration.this, LoginActivity.class);
         startActivity(intent);
     }
 
@@ -44,7 +44,7 @@ public class AccountDeclaration extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
         UpdateAccountType(1);
         ref.child("Users").child(String.valueOf(userid)).child("accountType").setValue(1);
-        Intent intent = new Intent(AccountDeclaration.this, BuyerDashboard.class);
+        Intent intent = new Intent(AccountDeclaration.this, LoginActivity.class);
         startActivity(intent);
     }
 

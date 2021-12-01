@@ -4,17 +4,15 @@ public class Product {
     String productID;
     String productName;
     String productDescription;
-    String productImageUrl;
     float productPrice;
-    String store;
+    Store store;
 
-    public Product(String id, String name, String description, float price, String market, String url){
+    public Product(String id, String name, String description, float price, Store market){
         this.productID = id;
         this.productName = name;
         this.productDescription = description;
         this.productPrice = price;
         this.store = market;
-        this.productImageUrl = url;
     }
 
     @Override
@@ -48,9 +46,6 @@ public class Product {
         if(productPrice != other.productPrice){
             return false;
         }
-        if(productImageUrl != other.productImageUrl){
-            return false;
-        }
         return store == other.store;
     }
 
@@ -70,12 +65,8 @@ public class Product {
         productPrice = price;
     }
 
-    protected void changeStore(String market){
+    protected void changeStore(Store market){
         store = market;
-    }
-
-    protected void changeProductImageUrl(String url){
-        productImageUrl = url;
     }
 
     public String getProductID(){
@@ -94,10 +85,9 @@ public class Product {
         return this.productPrice;
     }
 
-    public String getStore(){
+    public Store getStore(){
         return this.store;
     }
 
-    public String getProductImageUrl(){ return this.productImageUrl; }
 
 }

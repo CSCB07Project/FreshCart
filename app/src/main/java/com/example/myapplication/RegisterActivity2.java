@@ -117,7 +117,7 @@ public class RegisterActivity2 extends AppCompatActivity {
     public void redirect(int condition){
         Toast.makeText(RegisterActivity2.this, "User Has been successfully been added", Toast.LENGTH_SHORT).show();
         status.setVisibility(View.INVISIBLE);
-        Intent intent = new Intent(RegisterActivity2.this, LoginActivity.class);
+        Intent intent = new Intent(RegisterActivity2.this, AccountDeclaration.class);
         startActivity(intent);
     }
 
