@@ -30,8 +30,8 @@ SingleProductPage extends AppCompatActivity {
         String productimage = "";
         String productname = "";
         String productprice = "";
-        //String productdescription = "";
-        //String productid = "";
+        String productdescription = "";
+        String productid = "";
 
 
         Bundle extras = getIntent().getExtras();
@@ -39,8 +39,8 @@ SingleProductPage extends AppCompatActivity {
             productimage = extras.getString("mImages");
             productname = extras.getString("mImageNames");
             productprice = "$" + extras.getString("mPrice");
-            // productdescription = extras.getString("productDescription");
-            //productid = extras.getString("productID");
+            productdescription = extras.getString("mDesc");
+            productid = extras.getString("mId");
         }
 
         TextView tv = (TextView) findViewById(R.id.ProductNameText);
@@ -48,7 +48,7 @@ SingleProductPage extends AppCompatActivity {
         TextView tv1 = (TextView) findViewById(R.id.productnameinfo);
         tv1.setText(productname);
         TextView tv2 = (TextView) findViewById(R.id.productdescriptioninfo);
-        //tv2.setText(productdescription);
+        tv2.setText(productdescription);
         TextView tv3 = (TextView) findViewById(R.id.productpriceinfo);
         tv3.setText(productprice);
         incrementdecrement = (TextView) findViewById(R.id.itemcounter);
