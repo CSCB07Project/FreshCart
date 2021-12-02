@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.3'
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'
 
+
     //recycle view
     implementation 'com.android.support:recyclerview-v7:31.0.0'
 

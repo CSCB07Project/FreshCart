@@ -6,17 +6,32 @@ import java.util.HashMap;
 public class Order {
     String orderid;
     String storeid;
+    String store_name;
+    float total_price;
+    String date; //(MONTH Day) (Abbreviated month)
     HashMap<String, Integer> productids = new HashMap<String, Integer>(); //(Productid: Quantity)
     String userid;
     int status;
-    public Order(String orderid, String storeid, String userid, int status){
+    public Order(){};
+    public Order(String orderid, String storeid, String userid, int status, float total_price, String store_name, String date){
         this.orderid = orderid;
         this.storeid = storeid;
+        this.store_name = store_name;
         this.userid = userid;
         this.status = status;
+        this.date = date;
+        this.total_price = total_price;
         //Add empty order object
-        productids.put("-1", -1);
+        productids.put("None", -1);
     }
+    public String getDate(){
+        return this.date;
+    }
+
+    public void setDate(String d){
+        this.date = d;
+    }
+
     public String getOrderid() {
         return orderid;
     }
@@ -26,12 +41,28 @@ public class Order {
     }
 
     public void addProduct(String id, int quantity){
-        productids.remove("-1");//remove null placeholder
+        productids.remove("None");//remove null placeholder
         productids.put(id, quantity);
     }
 
     public String getUserid() {
         return userid;
+    }
+
+    public String getStore_name(){
+        return this.store_name;
+    }
+
+    public float getTotal_price(){
+        return this.total_price;
+    }
+
+    public void setTotal_price(float price){
+        this.total_price = price;
+    }
+
+    public void setStore_name(String name){
+        this.store_name = name;
     }
 
     public int getStatus() {
@@ -52,6 +83,9 @@ public class Order {
 
     public HashMap<String, Integer> getProductIds(){
         return this.productids;
+    }
+    public void setProductIds(HashMap<String, Integer> set){
+        this.productids = set;
     }
 
     public void setUserid(String userid) {
