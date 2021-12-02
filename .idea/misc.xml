@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_single_product_page.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items2.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3277777777777778" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_account_declaration.xml" value="0.25" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_create_new_store.xml" value="0.22" />

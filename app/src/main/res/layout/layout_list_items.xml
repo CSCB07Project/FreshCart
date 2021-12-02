@@ -7,6 +7,7 @@
     android:layout_margin="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="0dp"
+    android:background="@color/browser_actions_bg_grey"
     android:id="@+id/parent_store_layout">
 
 
@@ -24,10 +25,10 @@
         android:id="@+id/sotrename"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:background="@color/browser_actions_bg_grey"
         android:text="Name"
         android:textSize="25dp"
         android:textStyle="bold"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toTopOf="@+id/info"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,24 +37,10 @@
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/browser_actions_bg_grey"
+        android:layout_marginStart="16dp"
         android:text="StoreAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabStore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/vectorarrow"
-        app:backgroundTint="#ECECEC"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
