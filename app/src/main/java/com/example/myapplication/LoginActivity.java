@@ -7,17 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
+import com.example.myapplication.Dashboard_Seller.StoreLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(LoginActivity.this, AccountDeclaration.class);
             startActivity(intent);
         }else if(type == 0){
-            Intent intent = new Intent(LoginActivity.this, SellerDashboard.class);
+            Intent intent = new Intent(LoginActivity.this, StoreLoader.class);
             startActivity(intent);
         }else{
             Intent intent = new Intent(LoginActivity.this, BuyerDashboard.class);

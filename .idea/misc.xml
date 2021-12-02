@@ -3,13 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_single_product_page.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/Andrew/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items2.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3277777777777778" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_account_declaration.xml" value="0.25" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_create_new_store.xml" value="0.22" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_create_store.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_seller_dashboard.xml" value="0.33" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_store_loader.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_test_dash_board.xml" value="0.240625" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_blank.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_buyerdashboardaccount.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.24427083333333333" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.25" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.18" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.25" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardorders.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items.xml" value="0.34427083333333336" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/layout_list_items2.xml" value="0.34427083333333336" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/moreinfostore.xml" value="0.34427083333333336" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/order_layout.xml" value="0.34427083333333336" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/store_board.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/store_list.xml" value="0.33" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/menu/buyerdashboard_navmenu.xml" value="0.1" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/menu/sellerdashboard_navmenu.xml" value="0.34375" />
         <entry key="..\:/Users/porom/CSCB07Project/app/src/main/res/font/fontresource.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/porom/CSCB07Project/app/src/main/res/layout/introscreen.xml" value="0.13020833333333334" />

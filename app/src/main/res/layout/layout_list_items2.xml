@@ -16,7 +16,7 @@
         android:layout_height="130dp"
         android:clickable="true"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/storename"
+        app:layout_constraintBottom_toTopOf="@+id/productname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -25,7 +25,7 @@
 
 
     <TextView
-        android:id="@+id/storename"
+        android:id="@+id/productname"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_marginTop="130dp"

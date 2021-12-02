@@ -1,27 +1,33 @@
-package com.example.myapplication;
+package com.example.myapplication.Dashboard_Seller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.myapplication.fragments.Sellerdashboardaccount;
-import com.example.myapplication.fragments.Sellerdashboardhome;
-import com.example.myapplication.fragments.Sellerdashboardorders;
+import com.example.myapplication.Dashboard_Seller.pages.Sellerdashboardaccount;
+import com.example.myapplication.Dashboard_Seller.pages.Sellerdashboardhome;
+import com.example.myapplication.Dashboard_Seller.pages.Sellerdashboardorders;
+import com.example.myapplication.LoadingUserActivity;
+import com.example.myapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import android.view.MenuItem;
 import android.view.View;
 
 
 public class SellerDashboard extends AppCompatActivity {
-    Fragment fhome = new Sellerdashboardhome();
-    Fragment faccount = new Sellerdashboardaccount();
-    Fragment forders = new Sellerdashboardorders();
+    private Fragment fhome = new Sellerdashboardhome();
+    private Fragment faccount = new Sellerdashboardaccount();
+    private Fragment forders = new Sellerdashboardorders();
+
     final FragmentManager fm = getSupportFragmentManager();
     Fragment curr = fhome;
 
@@ -30,43 +36,48 @@ public class SellerDashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_dashboard);
+        replaceFragment(fhome);
 
         BottomNavigationView bottomNavigation = findViewById(R.id.sellerdashboard_nav);
-        //Set current frame
 
-        fm.beginTransaction().add(R.id.sellerframe,faccount).hide(faccount).commit();
-        fm.beginTransaction().add(R.id.sellerframe,forders).hide(forders).commit();
-        fm.beginTransaction().add(R.id.sellerframe,fhome).commit();
 
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.sellerdashboard_navmenu_home:
-                        fm.beginTransaction().hide(curr).show(fhome).commit();
-                        curr = fhome;
-                        return true;
-
+                        replaceFragment(fhome);
+                        break;
                     case R.id.sellerdashboard_navmenu_account:
-                        fm.beginTransaction().hide(curr).show(faccount).commit();
-                        curr = faccount;
-                        return true;
-
+                        replaceFragment(faccount);
+                        break;
                     case R.id.sellerdashboard_navmenu_orders:
-                        fm.beginTransaction().hide(curr).show(forders).commit();
-                        curr = forders;
-                        return true;
+                        replaceFragment(forders);
+                        break;
                 }
-                return false;
+                return true;
             }
         });
 
     }
+
+    private void replaceFragment(Fragment fragment){
+        if(fragment!=null){
+            FragmentTransaction transactor = getSupportFragmentManager().beginTransaction();
+            transactor.replace(R.id.sellerFragmentContainer, fragment);
+            transactor.commit();
+        }
+    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
-        Intent intent = new Intent(SellerDashboard.this, LoadingUserActivity.class);
-        startActivity(intent);
+        FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
+        if(curr == null){
+            Intent intent = new Intent(SellerDashboard.this, LoadingUserActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void createStore(View view){

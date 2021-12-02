@@ -27,14 +27,17 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private ArrayList<String> mPrice = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
     private ArrayList<String> mDesc = new ArrayList<>();
+    private ArrayList<String > mId;
     private Context mContext;
 
-    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc, Context Context) {
+    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc,ArrayList<String> id, Context Context) {
         this.mImageNames = ImageNames;
         this.mImages = Images;
         this.mPrice = Price;
         this.mContext = Context;
         this.mDesc = Desc;
+        this.mId =id;
+
     }
 
     @NonNull
@@ -55,14 +58,15 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         holder.name.setText(mImageNames.get(position));
         holder.price.setText("$ " + mPrice.get(position));
         holder.desc.setText(mDesc.get(position));
-
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, MoreInfoStore.class);
+                Intent intent = new Intent(mContext, SingleProductPage.class);
                 intent.putExtra("mImageNames", mImageNames.get(position));
                 intent.putExtra("mPrice", mPrice.get(position));
                 intent.putExtra("mImages", mImages.get(position));
+                intent.putExtra("mDesc", mDesc.get(position));
+                intent.putExtra("mId",mId.get(position));
                 mContext.startActivity(intent);
             }
         });
@@ -84,7 +88,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         public ViewHolder2(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.productimage);
-            name = itemView.findViewById(R.id.storename);
+            name = itemView.findViewById(R.id.productname);
             price = itemView.findViewById(R.id.productprice);
             desc = itemView.findViewById(R.id.productdesc);
             parentLayout = itemView.findViewById(R.id.parent_layout);
