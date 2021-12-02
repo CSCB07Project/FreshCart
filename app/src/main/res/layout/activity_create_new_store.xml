@@ -213,7 +213,7 @@
         app:srcCompat="@drawable/proceed" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/order_background"
         android:layout_width="166dp"
         android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -229,11 +229,11 @@
         android:layout_width="73dp"
         android:layout_height="36dp"
         android:text="Add"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView15"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintBottom_toBottomOf="@+id/order_background"
+        app:layout_constraintEnd_toEndOf="@+id/order_background"
         app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toTopOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/order_background"
+        app:layout_constraintTop_toTopOf="@+id/order_background"
         app:layout_constraintVertical_bias="0.684" />
 
 

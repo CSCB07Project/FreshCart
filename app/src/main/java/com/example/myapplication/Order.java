@@ -6,12 +6,16 @@ import java.util.HashMap;
 public class Order {
     String orderid;
     String storeid;
+    String store_name;
+    float total_price;
     HashMap<String, Integer> productids = new HashMap<String, Integer>(); //(Productid: Quantity)
     String userid;
     int status;
-    public Order(String orderid, String storeid, String userid, int status){
+    public Order(){};
+    public Order(String orderid, String storeid, String userid, int status, float total_price, String store_name){
         this.orderid = orderid;
         this.storeid = storeid;
+        this.store_name = store_name;
         this.userid = userid;
         this.status = status;
         //Add empty order object
@@ -32,6 +36,22 @@ public class Order {
 
     public String getUserid() {
         return userid;
+    }
+
+    public String getStore_name(){
+        return this.store_name;
+    }
+
+    public float getTotal_price(){
+        return this.total_price;
+    }
+
+    public void setTotal_price(float price){
+        this.total_price = price;
+    }
+
+    public void setStore_name(String name){
+        this.store_name = name;
     }
 
     public int getStatus() {

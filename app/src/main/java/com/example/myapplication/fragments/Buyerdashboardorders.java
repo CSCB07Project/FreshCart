@@ -1,14 +1,26 @@
 package com.example.myapplication.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.LoginActivity;
+import com.example.myapplication.Order;
 import com.example.myapplication.R;
+import com.example.myapplication.RecyclerViewAdapterOrder;
+import com.example.myapplication.Store;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,7 +33,8 @@ public class Buyerdashboardorders extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    RecyclerView recyclerView;
+    RecyclerViewAdapterOrder adapter;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,6 +74,39 @@ public class Buyerdashboardorders extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_buyerdashboardorders, container, false);
+        View view = inflater.inflate(R.layout.fragment_buyerdashboardorders, container, false);
+        recyclerView = view.findViewById(R.id.userdashorders_recycleview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseRecyclerOptions<Order> options =
+                new FirebaseRecyclerOptions.Builder<Order>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("userid").equalTo(user.getUid()), Order.class)
+                .build();
+
+        adapter = new RecyclerViewAdapterOrder(options);
+        recyclerView.setAdapter(adapter);
+        return view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
+        if(curr == null){
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
