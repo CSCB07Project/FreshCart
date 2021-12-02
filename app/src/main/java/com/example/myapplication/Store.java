@@ -24,6 +24,8 @@ public class Store {
     ArrayList<String> products = new ArrayList<String>();
     HashMap<String,String> openingHours = new HashMap<>();
 
+    public Store(){}
+
     public Store(String id, String name, String description, String bannerurl, String address, String country, String province, String city, String postal){
         this.storeID = id;
         this.storeName = name;

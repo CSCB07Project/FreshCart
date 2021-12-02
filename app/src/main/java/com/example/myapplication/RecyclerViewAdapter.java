@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -25,74 +26,51 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private static final String Tag = "RecyclerViewAdapter";
-    private static final int HOME_LAYOUT = 0;
-    private static final int ORDER_LAYOUT = 1;
-
-    private ArrayList<String> mName ;
-    private ArrayList<String> mBannersURL ;
-    private ArrayList<String> mInfo;
-    private ArrayList<String> eInfo;
-    private Context mContext;
-    private ArrayList<String> mId;
+public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Store,RecyclerViewAdapter.ViewHolder> {
     private Context context;
 
-    public RecyclerViewAdapter(ArrayList<String> mId,ArrayList<String> mName, ArrayList<String> mBannersURL, ArrayList<String> mInfo,ArrayList<String> eInfo, Context mContext) {
-    //public RecyclerViewAdapter(ArrayList<String> mName, ArrayList<String> mBannersURL, ArrayList<String> mInfo, Context mContext) {
-        this.mName = mName;
-        this.mBannersURL = mBannersURL;
-        this.mInfo = mInfo;
-        this.mContext = mContext;
-        this.mId = mId;
-        this.eInfo = eInfo;
+    public RecyclerViewAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int i, @NonNull Store store) {
+        viewHolder.name.setText(store.getStoreName());
+        viewHolder.info.setText(store.getStoreAddress());
+        Glide.with(context)
+                .load(store.getStoreBannerUrl())
+                .placeholder(R.drawable.cartlogo)
+                .dontAnimate()
+                .into(viewHolder.banner);
+
+        viewHolder.btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PInfo.class);
+                intent.putExtra("storeName", store.getStoreName());
+                intent.putExtra("storeBanner", store.getStoreBannerUrl());
+                intent.putExtra("storeID",store.getStoreID());
+                String eInfo = "Store ID:                   " + store.getStoreID() +
+                        "\nStore Name:            " + store.getStoreName() +
+                        "\nStore Description:   " + store.getStoreDescription() +
+                        "\nStore Contact:         " + store.getStoreContact() +
+                        "\nStore Address:        " + store.getStoreAddress() +
+                        "\nStore Postal:            " + store.getStorePostal() +
+                        "\nStore City:                " + store.getStoreCity() +
+                        "\nStore Province:       " + store.getStoreProvince() +
+                        "\nStore Country:         " + store.getStoreCountry();
+                intent.putExtra("eInfo", eInfo);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_items, parent, false));
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        Glide.with(mContext)
-                .load(mBannersURL.get(position))
-                .placeholder(R.drawable.cartlogo)
-                .dontAnimate()
-                .into(holder.banner);
-        holder.name.setText(mName.get(position));
-        holder.info.setText(mInfo.get(position));
-        holder.btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, PInfo.class);
-                intent.putExtra("storeName", mName.get(position));
-                intent.putExtra("storeBanner", mBannersURL.get(position));
-                intent.putExtra("storeID", mId.get(position));
-                intent.putExtra("eInfo", eInfo.get(position));
-                context.startActivity(intent);
-            }
-        });
-
-
-        /*
-        // onclick btn send eInfo
-        holder.parentStoreLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, eInfo.get(position), Toast.LENGTH_LONG).show();
-
-            }
-
-        });
-         */
-    }
-
-    @Override
-    public int getItemCount() {
-        return mInfo.size();
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_list_items, parent, false);
+        return new ViewHolder(view);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -112,5 +90,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             parentStoreLayout = itemView.findViewById(R.id.parent_store_layout);
         }
     }
-
 }
