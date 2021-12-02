@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Dashboard_Seller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.myapplication.Dashboard_Seller.models.ProductReaderWriter;
+import com.example.myapplication.Dashboard_Seller.models.StoreReaderWriter;
+import com.example.myapplication.R;
+import com.example.myapplication.Store;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -87,12 +91,11 @@ public class CreateNewStore extends AppCompatActivity {
     }
 
     public void Exit(View view){
-        finish();
+        Intent intent = new Intent(CreateNewStore.this, StoreLoader.class);
+        startActivity(intent);
     }
 
     public void AddToDb(View view){
-
-
         name = nameField.getText().toString();
         address = addressField.getText().toString();
         country = countryField.getText().toString();
@@ -101,32 +104,23 @@ public class CreateNewStore extends AppCompatActivity {
         postalCode = postalField.getText().toString();
         contactNumber = CNfield.getText().toString();
 
+        StoreReaderWriter operator = new StoreReaderWriter();
+
         if(CheckUserInput(name,address,country,province,city,postalCode,contactNumber)){
             String id = UUID.randomUUID().toString().replaceAll("-", "") ;
-            //Remove After
             String tempBanner = "https://cdn.pixabay.com/photo/2016/03/02/20/13/grocery-1232944_960_720.jpg";
-            //Create Store Object
             Store newStore = new Store(id,name,"NA",tempBanner,address,country,province,city,postalCode);
-
-            //Add to the db
-            data = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
-            data.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot){
-                    DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
-                    //Add Store
-                    ref.child("Seller").child(id).setValue(newStore);
-                    //Link User to the store.
-                    ref.child("Users").child(String.valueOf(userid)).child("storeID").setValue(id);
-
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.d("Error", "Cannot connect to server and set type.");
-                }
-            });
+            //Write
+            operator.writeToFirebase(newStore);
+            goToSellerDashboard();
+            finish();
         }
-        finish();
+
+    }
+
+    public void goToSellerDashboard(){
+        Intent intent = new Intent(CreateNewStore.this, SellerDashboard.class);
+        startActivity(intent);
     }
 
 
