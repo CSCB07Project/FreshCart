@@ -41,6 +41,7 @@ public class PInfo extends AppCompatActivity {
     ArrayList<String> mPrice = new ArrayList<>();
     ArrayList<String> mImages = new ArrayList<>();
     ArrayList<String> mDesc = new ArrayList<>();
+    ArrayList<String> mstoreName = new ArrayList<>();
     RecyclerViewAdapter2 adapter;
 
     @Override
@@ -187,7 +188,7 @@ public class PInfo extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, this);
+        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, mstoreName, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }

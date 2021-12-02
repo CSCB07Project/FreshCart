@@ -27,7 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class SingleProductPage extends AppCompatActivity {
+public class
+
+
+
+
+
+SingleProductPage extends AppCompatActivity {
     static int count = 0;
     Button add;
     Button minus;

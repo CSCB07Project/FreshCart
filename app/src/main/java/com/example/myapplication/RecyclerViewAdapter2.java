@@ -27,14 +27,16 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private ArrayList<String> mPrice = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
     private ArrayList<String> mDesc = new ArrayList<>();
+    private ArrayList<String> mstoreName = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc, Context Context) {
+    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc, ArrayList<String> storeName, Context Context) {
         this.mImageNames = ImageNames;
         this.mImages = Images;
         this.mPrice = Price;
         this.mContext = Context;
         this.mDesc = Desc;
+        this.mstoreName = storeName;
     }
 
     @NonNull
@@ -55,14 +57,16 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         holder.name.setText(mImageNames.get(position));
         holder.price.setText("$ " + mPrice.get(position));
         holder.desc.setText(mDesc.get(position));
-
+        holder.storeN.setText(mstoreName.get(position));
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, MoreInfoStore.class);
+                Intent intent = new Intent(mContext, SingleProductPage.class);
                 intent.putExtra("mImageNames", mImageNames.get(position));
                 intent.putExtra("mPrice", mPrice.get(position));
                 intent.putExtra("mImages", mImages.get(position));
+                intent.putExtra("mDesc", mDesc.get(position));
+                intent.putExtra("mstoreName", mstoreName.get(position));
                 mContext.startActivity(intent);
             }
         });
@@ -79,6 +83,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         TextView name;
         TextView price;
         TextView desc;
+        TextView storeN;
         ConstraintLayout parentLayout;
 
         public ViewHolder2(@NonNull View itemView) {
@@ -87,6 +92,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
             name = itemView.findViewById(R.id.storename);
             price = itemView.findViewById(R.id.productprice);
             desc = itemView.findViewById(R.id.productdesc);
+            storeN = itemView.findViewById(R.id.storeNN);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
