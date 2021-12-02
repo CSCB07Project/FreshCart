@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.example.myapplication" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -18,15 +18,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+
         <activity
-            android:name=".CreateNewStore"
+            android:name=".Dashboard_Seller.StoreLoader"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard_Seller.CreateNewStore"
             android:exported="false" />
         <activity
             android:name=".AccountDeclaration"
             android:exported="false"
             android:noHistory="true" />
         <activity
-            android:name=".SellerDashboard"
+            android:name=".Dashboard_Seller.SellerDashboard"
             android:exported="false" />
         <activity
             android:name=".BuyerDashboard"
@@ -58,7 +62,7 @@
 
         <activity
             android:name=".PInfo"
-            android:parentActivityName=".BuyerDashboard">
+            android:parentActivityName=".BuyerDashboard" >
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -83,7 +87,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:noHistory="true">
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

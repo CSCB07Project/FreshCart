@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#E5E5E5"
     android:scaleX="1.000"
-    tools:context=".CreateNewStore">
+    tools:context=".Dashboard_Seller.CreateNewStore">
 
     <ImageView
         android:id="@+id/imageView14"

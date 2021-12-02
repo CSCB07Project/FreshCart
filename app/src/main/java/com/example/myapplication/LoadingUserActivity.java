@@ -3,13 +3,12 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
+import com.example.myapplication.Dashboard_Seller.StoreLoader;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,14 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class LoadingUserActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -93,7 +84,7 @@ public class LoadingUserActivity extends AppCompatActivity {
             Intent intent = new Intent(LoadingUserActivity.this, AccountDeclaration.class);
             startActivity(intent);
         }else if(type == 0){
-            Intent intent = new Intent(LoadingUserActivity.this, SellerDashboard.class);
+            Intent intent = new Intent(LoadingUserActivity.this, StoreLoader.class);
             startActivity(intent);
         }else{
             Intent intent = new Intent(LoadingUserActivity.this, BuyerDashboard.class);
