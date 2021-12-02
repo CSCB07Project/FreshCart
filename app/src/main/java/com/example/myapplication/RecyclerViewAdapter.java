@@ -43,8 +43,7 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Store,RecyclerV
                 .dontAnimate()
                 .into(viewHolder.banner);
 
-        viewHolder.btn.setOnClickListener(new View.OnClickListener() {
-
+        viewHolder.parentStoreLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PInfo.class);
@@ -79,14 +78,12 @@ public class RecyclerViewAdapter extends FirebaseRecyclerAdapter<Store,RecyclerV
         TextView name;
         TextView info;
         ConstraintLayout parentStoreLayout;
-        FloatingActionButton btn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
             name = itemView.findViewById(R.id.sotrename);
             banner = itemView.findViewById(R.id.banner);
             info = itemView.findViewById(R.id.info);
-            btn = itemView.findViewById(R.id.fabStore);
             parentStoreLayout = itemView.findViewById(R.id.parent_store_layout);
         }
     }
