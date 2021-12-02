@@ -100,6 +100,7 @@ public class Buyerdashboardorders extends Fragment {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
+        adapter.notifyDataSetChanged();// Added THis line
     }
 
     @Override
@@ -107,6 +108,7 @@ public class Buyerdashboardorders extends Fragment {
         super.onStart();
         //TextView
         adapter.startListening();
+        adapter.notifyDataSetChanged(); // Added THis line
     }
 
     @Override
