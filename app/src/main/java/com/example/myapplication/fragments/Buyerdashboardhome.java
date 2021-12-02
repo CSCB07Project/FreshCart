@@ -13,10 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.myapplication.LoadingUserActivity;
+import com.example.myapplication.LoginActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapter;
 import com.example.myapplication.Store;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,9 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,20 +36,18 @@ import java.util.Iterator;
  */
 public class Buyerdashboardhome extends Fragment {
 
-    private View myFragmentView;
+    //private ArrayList<String> mBannerUrl = new ArrayList<>();
+    //private ArrayList<String> mInfo = new ArrayList<>();
+    //private ArrayList<String> eInfo = new ArrayList<>();
+    //private ArrayList<String> mName = new ArrayList<>();
+    //private ArrayList<String> mId = new ArrayList<>();
 
-    private ArrayList<String> mBannerUrl = new ArrayList<>();
-    private ArrayList<String> mInfo = new ArrayList<>();
-    private ArrayList<String> eInfo = new ArrayList<>();
-    private ArrayList<String> mName = new ArrayList<>();
-    private ArrayList<String> mId = new ArrayList<>();
 
-    RecyclerViewAdapter adapter;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    RecyclerView recyclerView;
+    RecyclerViewAdapter adapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -58,15 +57,7 @@ public class Buyerdashboardhome extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Sellerdashboardhome.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Buyerdashboardhome newInstance(String param1, String param2) {
         Buyerdashboardhome fragment = new Buyerdashboardhome();
         Bundle args = new Bundle();
@@ -79,17 +70,14 @@ public class Buyerdashboardhome extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState!=null){
-            mBannerUrl = savedInstanceState.getStringArrayList("mBannerUrl");
-            mInfo = savedInstanceState.getStringArrayList("mInfo");
-            mName = savedInstanceState.getStringArrayList("mName");
-        }
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        FirebaseDatabase.getInstance().getReference("Seller").addListenerForSingleValueEvent(new ValueEventListener() {
+        /*
+        DatabaseReference ref1 =  FirebaseDatabase.getInstance().getReference("Seller");
+       ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -138,7 +126,7 @@ public class Buyerdashboardhome extends Fragment {
                     mBannerUrl.add(storeBannerUrl);
 
                 }
-
+                //ref1.removeEventListener(this);
             }
 
             @Override
@@ -147,45 +135,49 @@ public class Buyerdashboardhome extends Fragment {
             }
         });
 
-    }
+         */
 
-    private void initRecyclerView(){
-        RecyclerView recyclerView = myFragmentView.findViewById(R.id.recyclerViewBuyer);
-        adapter = new RecyclerViewAdapter(mId, mName,mBannerUrl, mInfo,eInfo, getActivity());
-        //RecyclerViewAdapter adapter = new RecyclerViewAdapter(mName,mBannerUrl, mInfo, getActivity());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myFragmentView =  inflater.inflate(R.layout.fragment_buyerdashboardhome, container, false);
+        View view =  inflater.inflate(R.layout.fragment_buyerdashboardhome, container, false);
 
-        initRecyclerView();
-        // Inflate the layout for this fragment
-        return myFragmentView;
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBuyer);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        FirebaseRecyclerOptions<Store> options =
+                new FirebaseRecyclerOptions.Builder<Store>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Seller"), Store.class)
+                        .build();
+        adapter = new RecyclerViewAdapter(options);
+        //adapter = new RecyclerViewAdapter(mId, mName,mBannerUrl, mInfo,eInfo, getActivity());
+        recyclerView.setAdapter(adapter);
+        return view;
     }
 
     @Override
     public void onResume(){
         super.onResume();
-
         FirebaseUser curr = FirebaseAuth.getInstance().getCurrentUser();
         if(curr == null){
-            Intent intent = new Intent(getActivity(), LoadingUserActivity.class);
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
-        adapter.notifyDataSetChanged();
     }
-
-
 
     @Override
     public void onStart(){
         super.onStart();
-
-        //adapter.notifyDataSetChanged();
+        adapter.startListening();
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 
 }
