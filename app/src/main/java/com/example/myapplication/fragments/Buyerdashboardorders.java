@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myapplication.LoginActivity;
 import com.example.myapplication.Order;
@@ -101,6 +102,7 @@ public class Buyerdashboardorders extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+        //TextView
         adapter.startListening();
     }
 

@@ -4,27 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_order_layout"
     android:layout_width="400dp"
-    android:layout_height="150dp">
+    android:layout_height="100dp">
 
     <ImageView
         android:id="@+id/order_background"
-        android:layout_width="324dp"
-        android:layout_height="147dp"
+        android:layout_width="372dp"
+        android:layout_height="97dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/order" />
+        app:srcCompat="@drawable/userdash_orderviewholder" />
 
     <TextView
-        android:id="@+id/userdash_order_price"
+        android:id="@+id/userdash_order_price_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/robotomedium"
         android:text="price"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/order_background"
         app:layout_constraintTop_toTopOf="@+id/order_background" />
 
@@ -32,11 +32,11 @@
         android:id="@+id/userdash_order_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="21dp"
         android:fontFamily="@font/robotomedium"
         android:text="status"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/order_background"
         app:layout_constraintStart_toStartOf="@+id/order_background" />
 
@@ -44,24 +44,23 @@
         android:id="@+id/userdash_order_store"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="112dp"
-        android:fontFamily="@font/robottobold"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/robotomedium"
         android:text="storename"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/order_background"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/order_background" />
 
-    <TextView
-        android:id="@+id/userdash_itemnum"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="72dp"
-        android:fontFamily="@font/robotomedium"
-        android:text="items: x"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/order_background"
-        app:layout_constraintTop_toTopOf="@+id/order_background" />
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/order_background"
+        app:srcCompat="@drawable/divider" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
