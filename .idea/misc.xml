@@ -25,6 +25,7 @@
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_buyer_dashboard.xml" value="0.284375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_create_new_store.xml" value="0.284375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_create_store.xml" value="0.25" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_loading_user.xml" value="0.25625" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_register.xml" value="0.2911458333333333" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_register2.xml" value="0.2911458333333333" />
@@ -42,6 +43,7 @@
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/moreinfostore.xml" value="0.284375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/order_layout.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/store_list.xml" value="0.2859375" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/user_order_edit_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/activity_single_product_page.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.2874873353596758" />
