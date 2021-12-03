@@ -26,8 +26,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/userdashorders_recycleview"
-            android:layout_width="406dp"
-            android:layout_height="630dp"
+            android:layout_width="411dp"
+            android:layout_height="521dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
