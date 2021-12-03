@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+
 public class Product {
     String productID;
     String productName;
@@ -7,7 +8,7 @@ public class Product {
     String productImageUrl;
     float productPrice;
     String store;
-
+    public Product(){}
     public Product(String id, String name, String description, float price, String market, String url){
         this.productID = id;
         this.productName = name;

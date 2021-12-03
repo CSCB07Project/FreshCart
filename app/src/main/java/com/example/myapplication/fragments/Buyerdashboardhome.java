@@ -79,6 +79,9 @@ public class Buyerdashboardhome extends Fragment {
                         .build();
         adapter = new RecyclerViewAdapter(options);
         recyclerView.setAdapter(adapter);
+
+
+
         return view;
     }
 
