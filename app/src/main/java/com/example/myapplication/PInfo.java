@@ -148,7 +148,7 @@ public class PInfo extends AppCompatActivity {
         mId.add("0");
 
         mImageUrls.add("https://cdn.pixabay.com/photo/2012/02/28/15/43/rice-18431_1280.jpg");
-        mImages.add("Basmati Rice");
+        mImages.add("Rice");
         mDesc.add("A bag of Basmati Rice");
         mPrice.add("20");
         mId.add("0");
@@ -190,7 +190,7 @@ public class PInfo extends AppCompatActivity {
         mId.add("0");
 
         mImageUrls.add("https://cdn.pixabay.com/photo/2016/05/11/20/35/bell-peppers-1386467_1280.jpg");
-        mImages.add("Red Bell Peppers");
+        mImages.add("Bell Peppers");
         mDesc.add("A bag of 6 Red Bell Peppers");
         mPrice.add("8");
         mId.add("0");
