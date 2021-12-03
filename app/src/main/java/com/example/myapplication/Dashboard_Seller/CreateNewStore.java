@@ -90,7 +90,7 @@ public class CreateNewStore extends AppCompatActivity {
         return true;
     }
 
-    public void Exit(View view){
+    public void Exit(View view){ //Possible issue in future?
         Intent intent = new Intent(CreateNewStore.this, StoreLoader.class);
         startActivity(intent);
     }
@@ -122,6 +122,7 @@ public class CreateNewStore extends AppCompatActivity {
     public void goToSellerDashboard(){
         Intent intent = new Intent(CreateNewStore.this, SellerDashboard.class);
         startActivity(intent);
+        finish();
     }
 
 

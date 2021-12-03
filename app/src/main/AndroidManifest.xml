@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication" >
+    package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".SingleProductPage"
+        <activity
+            android:name=".Dashboard_Seller.CreateProduct"
+            android:exported="false" />
+        <activity
+            android:name=".SingleProductPage"
             android:parentActivityName=".PInfo">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".Dashboard_Seller.StoreLoader"
             android:exported="false" />
@@ -51,18 +56,18 @@
             android:name=".ChangePassword"
             android:exported="false"
             android:noHistory="true" />
-
-        <activity android:name=".MoreInfoStore"
+        <activity
+            android:name=".MoreInfoStore"
             android:parentActivityName=".PInfo">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
         <activity
             android:name=".PInfo"
-            android:parentActivityName=".BuyerDashboard" >
+            android:parentActivityName=".BuyerDashboard">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -87,7 +92,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

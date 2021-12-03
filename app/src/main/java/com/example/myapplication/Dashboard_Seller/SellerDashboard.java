@@ -61,6 +61,7 @@ public class SellerDashboard extends AppCompatActivity {
 
     }
 
+
     private void replaceFragment(Fragment fragment){
         if(fragment!=null){
             FragmentTransaction transactor = getSupportFragmentManager().beginTransaction();
@@ -79,10 +80,4 @@ public class SellerDashboard extends AppCompatActivity {
         }
 
     }
-
-    public void createStore(View view){
-        Intent intent = new Intent(SellerDashboard.this, CreateNewStore.class);
-        startActivity(intent);
-    }
-
 }

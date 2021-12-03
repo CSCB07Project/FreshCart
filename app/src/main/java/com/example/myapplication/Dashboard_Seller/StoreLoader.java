@@ -83,5 +83,6 @@ public class StoreLoader extends AppCompatActivity {
     public void CreateStorePage(View view){
         Intent intent = new Intent(StoreLoader.this, CreateNewStore.class);
         startActivity(intent);
+        finish();
     }
 }
