@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class
 
@@ -18,10 +24,11 @@ public class
 
 
 SingleProductPage extends AppCompatActivity {
-    static int count = 0;
+    int count = 0;
     FloatingActionButton add;
     FloatingActionButton minus;
     TextView incrementdecrement;
+    Button addtocart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,20 @@ SingleProductPage extends AppCompatActivity {
                     count = count - 1;
                     incrementdecrement.setText(String.valueOf(count));
                 }
+            }
+        });
+        addtocart = (Button) findViewById(R.id.addtocartbutton);
+        String finalproductid = productid;
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = user.getUid();
+                    DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
+                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                    startActivity(intent);
+
             }
         });
     }
