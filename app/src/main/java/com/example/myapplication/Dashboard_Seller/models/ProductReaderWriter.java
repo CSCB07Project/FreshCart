@@ -22,7 +22,7 @@ public class ProductReaderWriter {
 
     public ProductReaderWriter(){
         mAuth = FirebaseAuth.getInstance();
-        this.data = FirebaseDatabase.getInstance("SERVER_ADDRESS").getReference();
+        this.data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference();
     }
 
     //Create Latest product object
@@ -30,7 +30,7 @@ public class ProductReaderWriter {
     //
     public Product fetchProduct(String product_id){
         final Product[] Product = new Product[1];
-        data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference().child("Product").child(product_id);
+        data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference().child("Products").child(product_id);
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -54,7 +54,7 @@ public class ProductReaderWriter {
         data.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot){
-                data.child("Product").child(productID).setValue(newProduct);
+                data.child("Products").child(productID).setValue(newProduct);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -67,7 +67,7 @@ public class ProductReaderWriter {
 
     public boolean writeProduct(Product product, String product_id){
         data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference();
-        data.child("Product").child(product_id).setValue(product);
+        data.child("Products").child(product_id).setValue(product);
         return true;
     }
 
