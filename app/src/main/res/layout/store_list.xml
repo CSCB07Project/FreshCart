@@ -11,27 +11,27 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_store"
         android:layout_width="match_parent"
-        android:layout_height="310dp"
+        android:layout_height="300dp"
         android:translationY="5dp"
+        app:cardBackgroundColor="#B8B4B4"
         app:cardCornerRadius="35dp"
-        app:cardElevation="25dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/db_banner"
-        android:layout_width="366dp"
-        android:layout_height="205dp"
-        android:layout_margin="10dp"
-        android:elevation="26dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/samplegrocerystore"
-        app:layout_constraintBottom_toTopOf="@+id/storename_dash"
+        <ImageView
+            android:id="@+id/db_banner"
+            android:layout_width="330dp"
+            android:layout_height="197dp"
+            android:layout_margin="25dp"
+            android:elevation="26dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/samplegrocerystore"
 
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="6dp" />
+            />
+    </androidx.cardview.widget.CardView>
 
 
     <TextView

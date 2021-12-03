@@ -63,6 +63,7 @@
 
         <activity
             android:name=".PInfo"
+            android:launchMode="singleTask"
             android:parentActivityName=".BuyerDashboard" >
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
