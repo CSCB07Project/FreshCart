@@ -84,7 +84,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:translationX="15"
+        android:translationX="15dp"
         android:translationY="280dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
