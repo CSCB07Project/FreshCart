@@ -115,8 +115,9 @@ public class CreateNewStore extends AppCompatActivity {
             goToSellerDashboard();
             finish();
         }
-
     }
+
+
 
     public void goToSellerDashboard(){
         Intent intent = new Intent(CreateNewStore.this, SellerDashboard.class);

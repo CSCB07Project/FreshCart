@@ -8,6 +8,10 @@ public class Product {
     float productPrice;
     String store;
 
+    public Product(){
+
+    }
+
     public Product(String id, String name, String description, float price, String market, String url){
         this.productID = id;
         this.productName = name;
