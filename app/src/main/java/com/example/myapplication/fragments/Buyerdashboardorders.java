@@ -1,6 +1,7 @@
 package com.example.myapplication.fragments;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.LoginActivity;
@@ -26,11 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Sellerdashboardorders#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class Buyerdashboardorders extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -68,10 +66,6 @@ public class Buyerdashboardorders extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -86,9 +80,9 @@ public class Buyerdashboardorders extends Fragment {
                 new FirebaseRecyclerOptions.Builder<Order>()
                 .setQuery(FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("userid").equalTo(user.getUid()), Order.class)
                 .build();
-
         adapter = new RecyclerViewAdapterOrder(options);
         recyclerView.setAdapter(adapter);
+
         return view;
     }
 
