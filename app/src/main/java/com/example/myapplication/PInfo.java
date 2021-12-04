@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,8 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,8 +42,7 @@ public class PInfo extends AppCompatActivity {
     String storeContact = "", storeDescription = "", storeCountry = "", storeProvince = "", storeCity = "", storePostal = "";
     String storeID = "";
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference ref = db.collection("Products");
+
 
     ArrayList<String> products = new ArrayList<>();
     ArrayList<String> mImageUrls = new ArrayList<>();
@@ -52,8 +52,8 @@ public class PInfo extends AppCompatActivity {
     ArrayList<String> mId = new ArrayList<>();
     RecyclerViewAdapter2 adapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected View onCreate(LayoutInflater inflater, ViewGroup container,
+                            Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pinfomain);
 
@@ -91,7 +91,7 @@ public class PInfo extends AppCompatActivity {
             }
         });
 
-        FirebaseDatabase.getInstance().getReference("Seller").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Store").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild("storeName"))
@@ -125,15 +125,9 @@ public class PInfo extends AppCompatActivity {
 
         });
 
-        initRecyclerView();
+        View view =  inflater.inflate(R.layout.pinfomain, container, false);
 
-    }
-
-
-
-    private void initRecyclerView(){
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBuyer1);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         FirebaseRecyclerOptions<Product> options =
@@ -142,6 +136,10 @@ public class PInfo extends AppCompatActivity {
                         .build();
         adapter = new RecyclerViewAdapter2(options);
         recyclerView.setAdapter(adapter);
+
+
+
+        return view;
 
     }
 

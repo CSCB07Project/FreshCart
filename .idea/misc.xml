@@ -45,6 +45,8 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/activity_single_product_page.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/activity_store_loader.xml" value="0.5911458333333334" />
+        <entry key="app/src/main/res/layout/fragment_buyerdashboardaccount.xml" value="0.2874873353596758" />
+        <entry key="app/src/main/res/layout/fragment_buyerdashboardhome.xml" value="0.2874873353596758" />
         <entry key="app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.2874873353596758" />
         <entry key="app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/layout_list_items.xml" value="0.2874873353596758" />
