@@ -140,7 +140,7 @@ public class CreateProduct extends AppCompatActivity {
                             String url = uri.toString();
                             ProductReaderWriter writeData = new ProductReaderWriter();
                             Product newProduct = new Product(ProductID, productName, productDescription, product_price,StoreUUID,url);
-                            writeData.writeProduct(newProduct, ProductID);
+                            writeData.writeProduct(newProduct, ProductID, StoreUUID);
                             Toast.makeText(CreateProduct.this, "Product has been added", Toast.LENGTH_LONG).show();
 
                             //Add code that adds item to sellers product page. arraylist.

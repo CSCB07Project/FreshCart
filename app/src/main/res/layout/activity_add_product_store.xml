@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="#CFCFCF"
+    android:foregroundTint="#D8CDCD"
     tools:context=".Dashboard_Seller.CreateProduct">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -41,8 +45,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="372dp"
-        android:layout_height="459dp"
+        android:layout_width="359dp"
+        android:layout_height="480dp"
         app:cardBackgroundColor="#FAFAFA"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp"
@@ -123,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:translationX="20dp"
-            android:translationY="-10dp"
+            android:translationY="-30dp"
             app:srcCompat="@drawable/product" />
 
         <Button
@@ -133,7 +137,9 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="20dp"
             android:onClick="AddProduct"
-            android:text="Add" />
+            android:text="Add"
+            android:translationY="-30dp"
+            app:iconTint="#FFFFFF" />
 
         <Button
             android:id="@+id/productimgupload"
@@ -144,13 +150,15 @@
             android:onClick="getImage"
             android:text="Add"
             android:textSize="10sp"
-            android:translationX="-30dp" />
+            android:translationX="-30dp"
+            android:translationY="-23dp" />
 
         <ImageButton
             android:id="@+id/imageButton6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
+            android:background="#FAFAFA"
             android:onClick="backbtn"
             android:scaleX="1.5"
             android:scaleY="1.5"
@@ -164,6 +172,7 @@
         android:layout_height="wrap_content"
         android:rotationX="1.5"
         android:rotationY="1.5"
+        android:scaleY="1.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/registergroceries2" />
