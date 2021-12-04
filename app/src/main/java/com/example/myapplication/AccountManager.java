@@ -6,6 +6,4 @@ public class AccountManager extends Account{
         super(userid, username, firstName, lastName, emailAddress, -1);
     }
 
-
-
 }
