@@ -145,7 +145,7 @@ public class PInfo extends AppCompatActivity {
                     String productName = snapshot.child(product).child("productName").getValue().toString();
                     String productDescription = snapshot.child(product).child("productDescription").getValue().toString();
                     String productPrice = snapshot.child(product).child("productPrice").getValue().toString();
-                    String productImage = snapshot.child(product).child("productImage").getValue().toString();
+                    String productImage = snapshot.child(product).child("productImageUrl").getValue().toString();
                     String prouctId = snapshot.child(product).child("productID").getValue().toString();
                     mId.add(prouctId);
                     mImages.add(productName);
