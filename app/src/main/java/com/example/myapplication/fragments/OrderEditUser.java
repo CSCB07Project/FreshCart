@@ -30,8 +30,12 @@ public class OrderEditUser extends BottomSheetDialogFragment {
             desc += Character.toString((char) 183)+" "+ name + " x "+ products.get(name)+"\n\n";
         }
 
-        TextView tv = v.findViewById(R.id.orderIdTest);
-        tv.setText(getArguments().getString("storeName"));
+        TextView storeName = v.findViewById(R.id.orderIdTest);
+        storeName.setText(getArguments().getString("storeName"));
+
+        TextView date = v.findViewById(R.id.user_order_date);
+        date.setText(getArguments().getString("date"));
+
         TextView summary = v.findViewById(R.id.user_order_summary);
         summary.setText(desc);
         Button cancel = v.findViewById(R.id.user_cancel_order);
@@ -60,7 +64,6 @@ public class OrderEditUser extends BottomSheetDialogFragment {
             status.setTextColor(Color.BLACK);
             status.setText("Completed");
         }
-
 
         if(getArguments().getString("status") != "-1"){
             cancel.setOnClickListener(new View.OnClickListener() {

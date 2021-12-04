@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Seller extends Account{
@@ -17,11 +18,9 @@ public class Seller extends Account{
     public String toString() {
         return super.toString();
     }
-
     public String getStoreID() {
         return storeID;
     }
-
     public void addOrder(String id){
         orders.remove("-1");
         orders.add(id);
@@ -31,4 +30,10 @@ public class Seller extends Account{
         orders.remove(id);
     }
 
+    public ArrayList<String> getOrders(){
+        return this.orders;
+    }
+    public void addOrders(String id){
+        this.orders.add(id);
+    }
 }

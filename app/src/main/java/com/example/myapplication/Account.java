@@ -12,7 +12,7 @@ public abstract class Account {
     String emailAddress;
     int accountType;
 
-
+    public Account(){}
     public Account(String userid, String username, String firstName, String lastName, String emailAddress, int accountType) {
         this.userid = userid;
         this.username = username;

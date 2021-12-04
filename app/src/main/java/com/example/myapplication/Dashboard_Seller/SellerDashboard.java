@@ -30,17 +30,21 @@ public class SellerDashboard extends AppCompatActivity {
 
     final FragmentManager fm = getSupportFragmentManager();
     Fragment curr = fhome;
-
+    private String StoreUUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_dashboard);
+
+        StoreUUID = getIntent().getStringExtra("uuid");
+        Bundle bundle = new Bundle();
+        bundle.putString("udid", StoreUUID);
+        fhome.setArguments(bundle);
+        forders.setArguments(bundle);
+
         replaceFragment(fhome);
-
         BottomNavigationView bottomNavigation = findViewById(R.id.sellerdashboard_nav);
-
-
         bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -60,6 +64,13 @@ public class SellerDashboard extends AppCompatActivity {
         });
 
     }
+
+    public void AddProduct(View view){
+        Intent intent = new Intent(SellerDashboard.this, CreateProduct.class);
+        intent.putExtra("uuid", StoreUUID);
+        startActivity(intent);
+    }
+
 
 
     private void replaceFragment(Fragment fragment){

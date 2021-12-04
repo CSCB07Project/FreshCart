@@ -74,6 +74,7 @@ public class RecyclerViewAdapterOrder extends FirebaseRecyclerAdapter<Order,Recy
                 bundle.putString("storeName", order.getStore_name());
                 bundle.putString("orderId", order.getOrderid());
                 bundle.putString("status", String.valueOf(order.getStatus()));
+                bundle.putString("date", order.getDate());
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 OrderEditUser test = new OrderEditUser();
                 //Generate List of all products
@@ -120,7 +121,6 @@ public class RecyclerViewAdapterOrder extends FirebaseRecyclerAdapter<Order,Recy
         void StringData(String value);
     }
     public class ViewHolderOrder extends RecyclerView.ViewHolder{
-
         ImageView background;
         TextView store_name;
         TextView price_items;
@@ -135,7 +135,6 @@ public class RecyclerViewAdapterOrder extends FirebaseRecyclerAdapter<Order,Recy
             this.price_items = itemView.findViewById(R.id.userdash_order_price_items);
             this.status = itemView.findViewById(R.id.userdash_order_status);
             this.parentLayout = itemView.findViewById(R.id.parent_order_layout);
-
         }
     }
 }

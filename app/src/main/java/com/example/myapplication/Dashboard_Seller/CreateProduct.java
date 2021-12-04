@@ -44,6 +44,9 @@ public class CreateProduct extends AppCompatActivity {
     private final String FILESERVER_ADDRESS = "gs://b07project-39fda.appspot.com";
     private String userid;
 
+    private String StoreUUID;
+
+
     //Image Code
 
     private static final int image_req = 1;
@@ -68,6 +71,7 @@ public class CreateProduct extends AppCompatActivity {
 
 
         userid = mAuth.getCurrentUser().getUid().toString();
+        StoreUUID = getIntent().getStringExtra("uuid");
     }
 
     public boolean CheckUserInput(String name, String description, String price){
@@ -125,18 +129,26 @@ public class CreateProduct extends AppCompatActivity {
             float product_price =  Float.parseFloat(productPrice);
             String ProductID = UUID.randomUUID().toString().replaceAll("-", "");
             String producturlname =  ProductID +"." +gettype(imageurl);
-            String productLocationURL = "gs://b07project-39fda.appspot.com/" + producturlname;
-
             StorageReference fileref = storagedata.child(producturlname);
             fileref.putFile(imageurl).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     //Create entry in database.
-                    ProductReaderWriter writeData = new ProductReaderWriter();
-                    Product newProduct = new Product(ProductID, productName, productDescription, product_price,"-1" ,productLocationURL);
-                    writeData.writeProduct(newProduct, ProductID);
-                    Toast.makeText(CreateProduct.this, "Product has been added", Toast.LENGTH_LONG).show();
-                    finish();
+                    fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String url = uri.toString();
+                            ProductReaderWriter writeData = new ProductReaderWriter();
+                            Product newProduct = new Product(ProductID, productName, productDescription, product_price,StoreUUID,url);
+                            writeData.writeProduct(newProduct, ProductID);
+                            Toast.makeText(CreateProduct.this, "Product has been added", Toast.LENGTH_LONG).show();
+
+                            //Add code that adds item to sellers product page. arraylist.
+
+
+                            finish();
+                        }
+                    });
                 }
             });
         }

@@ -5,15 +5,10 @@
       <map>
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3277777777777778" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_account_declaration.xml" value="0.25" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_add_product_store.xml" value="0.25" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_buyer_dashboard.xml" value="0.35104166666666664" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_create_new_store.xml" value="0.25" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_create_store.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_seller_dashboard.xml" value="0.33" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/activity_test_dash_board.xml" value="0.240625" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.25" />
-        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.2" />
+        <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.18" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/layout/fragment_sellerdashboardorders.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Seron Ath/AndroidStudioProjects/FreshCart/app/src/main/res/menu/sellerdashboard_navmenu.xml" value="0.34375" />
         <entry key="..\:/Users/porom/CSCB07Project/app/src/main/res/font/fontresource.xml" value="0.16041666666666668" />
@@ -24,6 +19,7 @@
         <entry key="..\:/Users/rana_/CSCB07Project/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/rana_/CSCB07Project/app/src/main/res/layout/introscreen.xml" value="0.25" />
         <entry key="..\:/Users/rana_/CSCB07Project/app/src/main/res/layout/loginpage.xml" value="0.3375" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/drawable/orders.xml" value="0.228125" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/font/.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/font/fontresource.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_account_declaration.xml" value="0.1703125" />
@@ -37,26 +33,22 @@
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_seller_dashboard.xml" value="0.1703125" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/activity_test_dash_board.xml" value="0.1703125" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/change_name.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/change_username.xml" value="0.25625" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_buyerdashboardaccount.xml" value="0.25" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_buyerdashboardhome.xml" value="0.33" />
-        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.22" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.25" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.25" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_sellerdashboardhome.xml" value="0.25" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/fragment_sellerdashboardorders.xml" value="0.33" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/introscreen.xml" value="0.2859375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/layout_list_items.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/layout_list_items2.xml" value="0.2859375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/moreinfostore.xml" value="0.284375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/order_layout.xml" value="0.35052083333333334" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/pinfomain.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/seller_order_edit_layout.xml" value="0.2703125" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/store_list.xml" value="0.2859375" />
         <entry key="..\:/Users/rana_/FreshCart/app/src/main/res/layout/user_order_edit_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.5911458333333334" />
-        <entry key="app/src/main/res/layout/activity_single_product_page.xml" value="0.5911458333333334" />
-        <entry key="app/src/main/res/layout/fragment_buyerdashboardorders.xml" value="0.2874873353596758" />
-        <entry key="app/src/main/res/layout/fragment_sellerdashboardaccount.xml" value="0.5911458333333334" />
-        <entry key="app/src/main/res/layout/layout_list_items2.xml" value="0.45" />
-        <entry key="app/src/main/res/layout/order_layout.xml" value="0.5911458333333334" />
-        <entry key="app/src/main/res/layout/pinfomain.xml" value="0.2874873353596758" />
-        <entry key="app/src/main/res/layout/product_list.xml" value="0.5911458333333334" />
       </map>
     </option>
   </component>

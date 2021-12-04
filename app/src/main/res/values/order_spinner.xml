@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="order_options">
+            <item><font size = "20">Pending Approval</font></item>
+            <item><font size = "20">Preparing Order</font></item>
+            <item><font size = "20">Ready For Pickup</font></item>
+            <item><font size = "20">Completed</font></item>
+            <item><font size = "20">Cancel</font></item>
+        </string-array>
+</resources>

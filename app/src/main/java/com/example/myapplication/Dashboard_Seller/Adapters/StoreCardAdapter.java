@@ -29,6 +29,10 @@ public class StoreCardAdapter extends FirebaseRecyclerAdapter<Store, StoreCardAd
     protected void onBindViewHolder(@NonNull StoreCard holder, int position, @NonNull Store model) {
         holder.textViewStoreName.setText(String.valueOf(model.getStoreName()));
         holder.textViewLocation.setText(String.valueOf(model.getStoreAddress()));
+        //aDD IMAGE
+
+        //Add code to view image.
+
     }
 
     @NonNull
@@ -41,13 +45,13 @@ public class StoreCardAdapter extends FirebaseRecyclerAdapter<Store, StoreCardAd
     class StoreCard extends RecyclerView.ViewHolder{
         TextView textViewStoreName;
         TextView textViewLocation;
-        //ImageView ImageBanner;
+        ImageView ImageBanner;
 
         public StoreCard(View itemView){
             super(itemView);
             textViewStoreName = itemView.findViewById(R.id.storename_dash);
             textViewLocation = itemView.findViewById(R.id.store_db_info);
-            //ImageBanner = itemView.findViewById(R.id.db_banner);
+            ImageBanner = itemView.findViewById(R.id.db_banner);
         }
 
     }

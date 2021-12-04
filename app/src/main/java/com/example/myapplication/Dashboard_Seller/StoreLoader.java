@@ -54,7 +54,7 @@ public class StoreLoader extends AppCompatActivity {
                 try{
                     obtained = snapshot.child("storeID").getValue().toString();
                     if(!(obtained == null || obtained.compareTo("-1") == 0)){
-                        router(true);
+                        router(true, obtained);
                     }
 
                 }catch(Exception e){
@@ -72,9 +72,10 @@ public class StoreLoader extends AppCompatActivity {
 
 
 
-    public void router(boolean status){
+    public void router(boolean status, String Store_UUID){
         if(status){ //Go to the store.
             Intent intent = new Intent(StoreLoader.this, SellerDashboard.class);
+            intent.putExtra("uuid", Store_UUID);
             startActivity(intent);
             finish();
         }
