@@ -12,12 +12,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChangePassword extends AppCompatActivity {
 
@@ -25,6 +29,7 @@ public class ChangePassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
+        final int[] type = new int[1];
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
@@ -41,6 +46,19 @@ public class ChangePassword extends AppCompatActivity {
                 String input0 = eT0.getText().toString();
                 String input1 = eT1.getText().toString();
                 String input2 = eT2.getText().toString();
+
+                FirebaseDatabase.getInstance().getReference("Users").child(uid).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Log.d("TAG", String.valueOf(snapshot.getValue()));
+                        type[0] = Integer.parseInt(String.valueOf(snapshot.getValue()));
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
 
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -62,8 +80,17 @@ public class ChangePassword extends AppCompatActivity {
                                     else{
                                         user.updatePassword(input1);
 
-                                        Intent intent = new Intent(ChangePassword.this, BuyerDashboard.class);
-                                        startActivity(intent);
+                                        if(type[0] == 1){
+                                            Intent intent = new Intent(ChangePassword.this, BuyerDashboard.class);
+                                            startActivity(intent);
+                                        }
+
+                                        if(type[0] == 0){
+                                            Intent intent = new Intent(ChangePassword.this, SellerDashboard.class);
+                                            startActivity(intent);
+                                        }
+
+
                                     }
                                 } else {
                                     Toast toast = Toast.makeText(ChangePassword.this, "Wrong Password", Toast.LENGTH_LONG);
