@@ -137,6 +137,7 @@ public class PInfo extends AppCompatActivity {
 
         });
 
+        String finalStoreName1 = storeName;
         FirebaseDatabase.getInstance().getReference("Products").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -156,7 +157,7 @@ public class PInfo extends AppCompatActivity {
                 }
                 Log.d("produ", String.valueOf(mId.size()));
                 RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
-                adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, mId, PInfo.this);
+                adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, mId, finalStoreName1, PInfo.this);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new GridLayoutManager(PInfo.this, 2));
                 Log.d("produ", String.valueOf(mId.size()));
