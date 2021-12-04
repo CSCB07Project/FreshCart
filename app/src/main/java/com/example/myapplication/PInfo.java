@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -83,7 +84,20 @@ public class PInfo extends AppCompatActivity {
             }
         });
 
-        FirebaseDatabase.getInstance().getReference("Seller").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
+        FloatingActionButton checkCart = (FloatingActionButton) findViewById(R.id.checkCart);
+        String finalStoreName = storeName;
+        String finalStoreId = storeId;
+        checkCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PInfo.this, Cart.class);
+                intent.putExtra("storeName", finalStoreName);
+                intent.putExtra("storeID", finalStoreId);
+                startActivity(intent);
+            }
+        });
+
+        FirebaseDatabase.getInstance().getReference("Store").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChild("storeName"))
@@ -106,6 +120,12 @@ public class PInfo extends AppCompatActivity {
                     storeCity = snapshot.child("storeCity").getValue().toString();
                 if (snapshot.hasChild("storePostal"))
                     storePostal = snapshot.child("storePostal").getValue().toString();
+                if (snapshot.hasChild("storeID"))
+                    storeID = snapshot.child("storeID").getValue().toString();
+                if (snapshot.hasChild("Products")) {
+                    for (DataSnapshot ss : snapshot.child("Products").getChildren())
+                        products.add(ss.getValue().toString());
+                }
 
             }
 
@@ -117,91 +137,37 @@ public class PInfo extends AppCompatActivity {
 
         });
 
-        initImageBitmaps();
+        FirebaseDatabase.getInstance().getReference("Products").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (String product : products) {
+                    String productName = snapshot.child(product).child("productName").getValue().toString();
+                    String productDescription = snapshot.child(product).child("productDescription").getValue().toString();
+                    String productPrice = snapshot.child(product).child("productPrice").getValue().toString();
+                    String productImage = snapshot.child(product).child("productImage").getValue().toString();
+                    String prouctId = snapshot.child(product).child("productID").getValue().toString();
+                    mId.add(prouctId);
+                    mImages.add(productName);
+                    mDesc.add(productDescription);
+                    mPrice.add(productPrice);
+                    mImageUrls.add(productImage);
+                    Log.d("productName", productName);
 
+                }
+                Log.d("produ", String.valueOf(mId.size()));
+                RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
+                adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc, mId, PInfo.this);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new GridLayoutManager(PInfo.this, 2));
+                Log.d("produ", String.valueOf(mId.size()));
+            }
 
-    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-    private void initImageBitmaps(){
-        mImageUrls.add("https://cdn.pixabay.com/photo/2016/10/07/14/11/tangerines-1721633_1280.jpg");
-        mImages.add("Orange");
-        mDesc.add("A bag of 5 oranges");
-        mPrice.add("5");
-        mId.add("0");
+            }
 
-        mImageUrls.add("https://cdn.pixabay.com/photo/2013/07/05/12/12/apples-143457_1280.jpg");
-        mImages.add("Apple");
-        mDesc.add("A bag of 6 apples");
-        mPrice.add("6");
-        mId.add("1");
+        });
 
-        mImageUrls.add("https://cdn.pixabay.com/photo/2015/08/18/23/09/bananas-895072_1280.jpg");
-        mImages.add("Banana");
-        mDesc.add("A bag of 12 bananas");
-        mPrice.add("7");
-        mId.add("2");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2017/02/05/12/31/lemons-2039830_1280.jpg");
-        mImages.add("Lemon");
-        mDesc.add("A bag of 10 lemons");
-        mPrice.add("8");
-        mId.add("3");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2012/02/28/15/43/rice-18431_1280.jpg");
-        mImages.add("Rice");
-        mDesc.add("A bag of Basmati Rice");
-        mPrice.add("20");
-        mId.add("4");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2016/07/16/16/30/spinach-1522283_1280.jpg");
-        mImages.add("Spinach");
-        mDesc.add("A bag of Spinach");
-        mPrice.add("6");
-        mId.add("5");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2018/05/21/21/23/garlic-3419544_1280.jpg");
-        mImages.add("Garlic");
-        mDesc.add("A packet of Garlic");
-        mPrice.add("7");
-        mId.add("6");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2016/07/11/00/18/carrots-1508847_1280.jpg");
-        mImages.add("Carrot");
-        mDesc.add("A bag of 12 Carrots");
-        mPrice.add("8");
-        mId.add("7");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2014/08/06/20/32/potatoes-411975_1280.jpg");
-        mImages.add("Potato");
-        mDesc.add("A bag of 10 Potatoes");
-        mPrice.add("5");
-        mId.add("8");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2018/12/07/00/19/savoy-3860933_1280.jpg");
-        mImages.add("Cabbage");
-        mDesc.add("A bag of Cabbage");
-        mPrice.add("6");
-        mId.add("9");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2016/05/12/16/34/ginger-1388002_1280.jpg");
-        mImages.add("Ginger");
-        mDesc.add("A packet of Ginger");
-        mPrice.add("7");
-        mId.add("10");
-
-        mImageUrls.add("https://cdn.pixabay.com/photo/2016/05/11/20/35/bell-peppers-1386467_1280.jpg");
-        mImages.add("Bell Peppers");
-        mDesc.add("A bag of 6 Red Bell Peppers");
-        mPrice.add("8");
-        mId.add("11");
-
-        initRecyclerView();
-    }
-
-    private void initRecyclerView(){
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc,mId, storeName1, this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
 }
