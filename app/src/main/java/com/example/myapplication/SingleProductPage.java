@@ -3,10 +3,15 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,15 +25,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class
 
 
-
-
-
 SingleProductPage extends AppCompatActivity {
     int count = 0;
     FloatingActionButton add;
     FloatingActionButton minus;
     TextView incrementdecrement;
     Button addtocart;
+    Button yes;
+    Button no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,14 +97,48 @@ SingleProductPage extends AppCompatActivity {
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    String uid = user.getUid();
-                    DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
-                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                    startActivity(intent);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
+                // if (ref.child("Products").child(finalproductid).child(String.valueOf("store")) != ref.child("Store").child(finalstoreid).child(String.valueOf("storeID"))) {
+
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true;
+                PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+//                    yes = (Button) findViewById(R.id.YesButton);
+//                    yes.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            ref.child("Users").child(uid).child("cart").setValue(null);
+//                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+//                        }
+//                    });
+                no = (Button) findViewById(R.id.NoButton);
+                no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        popupWindow.dismiss();
+                    }
+                });
+// } else {
+//                if (count != 0) {
+//                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+//                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+//                }
 
             }
+            // }
         });
     }
 }
+
+
+
