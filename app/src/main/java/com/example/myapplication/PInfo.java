@@ -200,7 +200,7 @@ public class PInfo extends AppCompatActivity {
 
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
-        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc,mId, this);
+        RecyclerViewAdapter2 adapter = new RecyclerViewAdapter2(mImages, mImageUrls, mPrice, mDesc,mId, storeName1, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
     }
