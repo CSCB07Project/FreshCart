@@ -14,31 +14,24 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import org.w3c.dom.Text;
 
 import java.util.*;
 
-public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder2>{
+public class RecyclerViewAdapter2 extends FirebaseRecyclerAdapter<Product,RecyclerViewAdapter2.ViewHolder2> {
 
     private static final String TAG = "RecyclerViewAdapter2";
 
     private ArrayList<String> mImageNames = new ArrayList<>();
-    private ArrayList<String> mPrice = new ArrayList<>();
-    private ArrayList<String> mImages = new ArrayList<>();
-    private ArrayList<String> mDesc = new ArrayList<>();
-    private ArrayList<String > mId;
     private Context mContext;
 
-    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc,ArrayList<String> id, Context Context) {
-        this.mImageNames = ImageNames;
-        this.mImages = Images;
-        this.mPrice = Price;
-        this.mContext = Context;
-        this.mDesc = Desc;
-        this.mId =id;
-
+    public RecyclerViewAdapter2(@NonNull FirebaseRecyclerOptions<Product> options) {
+        super(options);
     }
+
 
     @NonNull
     @Override
@@ -49,24 +42,25 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder2 holder, @SuppressLint("RecyclerView") final int position) {
+    protected void onBindViewHolder(@NonNull ViewHolder2 holder, int position, @NonNull Product model) {
+        holder.name.setText(model.getProductName());
+        holder.price.setText("$ " + model.productPrice);
+        holder.desc.setText(model.getProductDescription());
+
         Glide.with(mContext)
                 .asBitmap()
-                .load(mImages.get(position))
+                .load(model.productImageUrl)
                 .into(holder.image);
 
-        holder.name.setText(mImageNames.get(position));
-        holder.price.setText("$ " + mPrice.get(position));
-        holder.desc.setText(mDesc.get(position));
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, SingleProductPage.class);
-                intent.putExtra("mImageNames", mImageNames.get(position));
-                intent.putExtra("mPrice", mPrice.get(position));
-                intent.putExtra("mImages", mImages.get(position));
-                intent.putExtra("mDesc", mDesc.get(position));
-                intent.putExtra("mId",mId.get(position));
+                intent.putExtra("mImageNames", model.productName);
+                intent.putExtra("mPrice", model.productPrice);
+                intent.putExtra("mImages", model.productImageUrl);
+                intent.putExtra("mDesc", model.productDescription);
+                intent.putExtra("mId",model.productID);
                 mContext.startActivity(intent);
             }
         });
