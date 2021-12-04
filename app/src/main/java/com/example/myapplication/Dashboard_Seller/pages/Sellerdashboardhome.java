@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.ChangeUsername;
 import com.example.myapplication.Dashboard_Seller.Adapters.ProductCardAdapter;
 
@@ -42,7 +44,6 @@ public class Sellerdashboardhome extends Fragment {
     private ProductCardAdapter adapter;
     private FirebaseAuth mAuth;
     private DatabaseReference data;
-
     private String StoreUUID;
 
 
@@ -75,11 +76,24 @@ public class Sellerdashboardhome extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot){
                 String StoreName = "Store Seller";
+                String bannerUrl = "";
                 try{
                     StoreName = snapshot.child("storeName").getValue().toString();
+                    bannerUrl = snapshot.child("storeBannerUrl").getValue().toString();
                     if(!(StoreName == null || StoreName.compareTo("-1") == 0)){
                         CollapsingToolbarLayout bar = myFragmentView.findViewById(R.id.StoreTitleBar);
                         bar.setTitle(StoreName);
+
+                        ImageView img = myFragmentView.findViewById(R.id.banner_img);
+
+                        Glide.with(getContext())
+                                .load(bannerUrl)
+                                .placeholder(R.drawable.cartlogo)
+                                .dontAnimate()
+                                .into(img);
+
+
+                        //bar.setBackground();
                     }
                 }catch(Exception e){
                     FirebaseAuth.getInstance().signOut();
