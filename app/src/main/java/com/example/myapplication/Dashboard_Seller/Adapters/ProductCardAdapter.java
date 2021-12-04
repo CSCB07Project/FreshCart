@@ -1,13 +1,20 @@
 package com.example.myapplication.Dashboard_Seller.Adapters;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
 import com.example.myapplication.Product;
 import com.example.myapplication.R;
+import com.example.myapplication.SingleProductPage;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.example.myapplication.Store;
@@ -15,15 +22,38 @@ import com.example.myapplication.Store;
 
 
 public class ProductCardAdapter extends FirebaseRecyclerAdapter<Product, ProductCardAdapter.ProductCard> {
+    private Context context;
 
     public ProductCardAdapter(@NonNull FirebaseRecyclerOptions<Product> options) {
         super(options);
     }
 
+
     @Override
     protected void onBindViewHolder(@NonNull ProductCard holder, int position, @NonNull Product model) {
+        //Set Content
         holder.textViewProductName.setText(String.valueOf(model.getProductName()));
         holder.textViewCost.setText(String.valueOf(model.getProductPrice()));
+        Glide.with(context)
+                .load(model.getProductImageUrl())
+                .placeholder(R.drawable.cartlogo)
+                .dontAnimate()
+                .into(holder.ImageBanner);
+
+        //Add new Onclick
+        holder.cardlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, SingleProductPage.class);
+                intent.putExtra("productID", model.getProductID());
+                intent.putExtra("productName", model.getProductName());
+                intent.putExtra("productDescription", model.getProductDescription());
+                intent.putExtra("productImageUrl", model.getProductImageUrl());
+                intent.putExtra("productPrice", model.getProductPrice());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -37,13 +67,16 @@ public class ProductCardAdapter extends FirebaseRecyclerAdapter<Product, Product
     class ProductCard extends RecyclerView.ViewHolder{
         TextView textViewProductName;
         TextView textViewCost;
-        //ImageView ImageBanner;
+        ImageView ImageBanner;
+        ConstraintLayout cardlayout;
 
         public ProductCard(View itemView){
             super(itemView);
             textViewProductName = itemView.findViewById(R.id.productname_dashseller);
             textViewCost = itemView.findViewById(R.id.store_db_info_seller);
-            //ImageBanner = itemView.findViewById(R.id.pd_banner_seller);
+            ImageBanner = itemView.findViewById(R.id.pd_banner_seller);
+            cardlayout = itemView.findViewById(R.id.parent_store_layout);
+            context = itemView.getContext();
         }
 
     }
