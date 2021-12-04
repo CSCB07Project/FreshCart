@@ -75,13 +75,6 @@ public class Buyerdashboardorders extends Fragment {
         View view = inflater.inflate(R.layout.fragment_buyerdashboardorders, container, false);
         recyclerView = view.findViewById(R.id.userdashorders_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseRecyclerOptions<Order> options =
-                new FirebaseRecyclerOptions.Builder<Order>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("userid").equalTo(user.getUid()), Order.class)
-                .build();
-        adapter = new RecyclerViewAdapterOrder(options);
-        recyclerView.setAdapter(adapter);
 
         return view;
     }
@@ -94,12 +87,20 @@ public class Buyerdashboardorders extends Fragment {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         }
+        adapter.startListening();
         adapter.notifyDataSetChanged();// Added This line
     }
 
     @Override
     public void onStart(){
         super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseRecyclerOptions<Order> options =
+                new FirebaseRecyclerOptions.Builder<Order>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Orders").orderByChild("userid").equalTo(user.getUid()), Order.class)
+                        .build();
+        adapter = new RecyclerViewAdapterOrder(options);
+        recyclerView.setAdapter(adapter);
         //TextView
         adapter.startListening();
         adapter.notifyDataSetChanged(); // Added This line

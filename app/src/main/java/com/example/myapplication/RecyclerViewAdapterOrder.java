@@ -74,6 +74,7 @@ public class RecyclerViewAdapterOrder extends FirebaseRecyclerAdapter<Order,Recy
                 bundle.putString("storeName", order.getStore_name());
                 bundle.putString("orderId", order.getOrderid());
                 bundle.putString("status", String.valueOf(order.getStatus()));
+                bundle.putString("date", order.getDate());
                 FragmentManager manager = ((AppCompatActivity)context).getSupportFragmentManager();
                 OrderEditUser test = new OrderEditUser();
                 //Generate List of all products

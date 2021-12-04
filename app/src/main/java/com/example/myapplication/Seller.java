@@ -18,11 +18,9 @@ public class Seller extends Account{
     public String toString() {
         return super.toString();
     }
-
     public String getStoreID() {
         return storeID;
     }
-
     public void addOrder(String id){
         orders.remove("-1");
         orders.add(id);
