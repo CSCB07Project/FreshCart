@@ -65,7 +65,6 @@ public class OrderEditUser extends BottomSheetDialogFragment {
             status.setText("Completed");
         }
 
-
         if(getArguments().getString("status") != "-1"){
             cancel.setOnClickListener(new View.OnClickListener() {
                 @Override

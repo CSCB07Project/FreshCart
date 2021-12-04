@@ -41,6 +41,7 @@ public class SellerDashboard extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("udid", StoreUUID);
         fhome.setArguments(bundle);
+        forders.setArguments(bundle);
 
         replaceFragment(fhome);
         BottomNavigationView bottomNavigation = findViewById(R.id.sellerdashboard_nav);

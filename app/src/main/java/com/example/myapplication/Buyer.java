@@ -9,6 +9,7 @@ public class Buyer extends Account{
 
     HashMap<String,Integer> cart;
     ArrayList<String> buyerOrders;
+    public Buyer(){}
     public Buyer(String userid, String username, String firstName, String lastName, String emailAddress){
         super(userid, username, firstName, lastName, emailAddress, 1);
         cart = new HashMap<String, Integer>();
