@@ -31,11 +31,14 @@
                 android:backgroundTintMode="src_over"
                 app:contentScrim="@color/design_default_color_primary"
                 app:expandedTitleMargin="45dp"
-
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="Store name">
 
-
+                <ImageView
+                    android:id="@+id/banner_img"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop" />
                 <Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
