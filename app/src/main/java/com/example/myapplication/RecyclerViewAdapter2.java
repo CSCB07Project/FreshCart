@@ -28,15 +28,17 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     private ArrayList<String> mImages = new ArrayList<>();
     private ArrayList<String> mDesc = new ArrayList<>();
     private ArrayList<String > mId;
+    private String StoreName;
     private Context mContext;
 
-    public RecyclerViewAdapter2(ArrayList<String> ImageNames,ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc,ArrayList<String> id, Context Context) {
+    public RecyclerViewAdapter2(ArrayList<String> ImageNames, ArrayList<String> Images, ArrayList<String> Price, ArrayList<String> Desc, ArrayList<String> id, String StoreName, Context Context) {
         this.mImageNames = ImageNames;
         this.mImages = Images;
         this.mPrice = Price;
         this.mContext = Context;
         this.mDesc = Desc;
         this.mId =id;
+        this.StoreName = StoreName;
 
     }
 
@@ -67,6 +69,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                 intent.putExtra("mImages", mImages.get(position));
                 intent.putExtra("mDesc", mDesc.get(position));
                 intent.putExtra("mId",mId.get(position));
+                intent.putExtra("StoreName", StoreName );
                 mContext.startActivity(intent);
             }
         });
