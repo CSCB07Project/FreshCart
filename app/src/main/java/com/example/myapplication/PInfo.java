@@ -45,7 +45,6 @@ public class PInfo extends AppCompatActivity {
 
 
     ArrayList<String> products = new ArrayList<>();
-    ArrayList<String> mImageUrls = new ArrayList<>();
     ArrayList<String> mPrice = new ArrayList<>();
     ArrayList<String> mImages = new ArrayList<>();
     ArrayList<String> mDesc = new ArrayList<>();
@@ -113,7 +112,10 @@ public class PInfo extends AppCompatActivity {
                     storeCity = snapshot.child("storeCity").getValue().toString();
                 if (snapshot.hasChild("storePostal"))
                     storePostal = snapshot.child("storePostal").getValue().toString();
-
+                if (snapshot.hasChild("Products")){
+                    for (DataSnapshot ds : snapshot.child("Products").getChildren())
+                        products.add(ds.getValue().toString());
+                }
             }
 
             @Override
@@ -121,6 +123,25 @@ public class PInfo extends AppCompatActivity {
             }
 
 
+        });
+
+        FirebaseDatabase.getInstance().getReference("Products").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(String p : products){
+                    String name = snapshot.child(p).child("productName").getValue().toString();
+                    String description = snapshot.child(p).child("productDescription").getValue().toString();
+                    String price = snapshot.child(p).child("productPrice").getValue().toString();
+                    String image = snapshot.child(p).child("productImage").getValue().toString();
+                    m
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
 
         Query query = FirebaseDatabase.getInstance().getReference("Products").orderByChild("Store").equalTo(storeID);
