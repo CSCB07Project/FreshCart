@@ -52,8 +52,7 @@ public class PInfo extends AppCompatActivity {
     ArrayList<String> mId = new ArrayList<>();
     RecyclerViewAdapter2 adapter;
 
-    protected View onCreate(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pinfomain);
 
@@ -119,27 +118,22 @@ public class PInfo extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
 
 
         });
 
-        View view =  inflater.inflate(R.layout.pinfomain, container, false);
+        Query query = FirebaseDatabase.getInstance().getReference("Products").orderByChild("Store").equalTo(storeID);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewBuyer1);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        FirebaseRecyclerOptions<Product> options = new FirebaseRecyclerOptions.Builder<Product>()
+                .setQuery(query, Product.class)
+                .build();
 
-        FirebaseRecyclerOptions<Product> options =
-                new FirebaseRecyclerOptions.Builder<Product>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Products"), Product.class)
-                        .build();
         adapter = new RecyclerViewAdapter2(options);
-        recyclerView.setAdapter(adapter);
 
-
-
-        return view;
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewBuyer1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
     }
 
