@@ -75,7 +75,7 @@ public class Buyerdashboardhome extends Fragment {
 
         FirebaseRecyclerOptions<Store> options =
                 new FirebaseRecyclerOptions.Builder<Store>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Seller"), Store.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Store"), Store.class)
                         .build();
         adapter = new RecyclerViewAdapter(options);
         recyclerView.setAdapter(adapter);
