@@ -46,7 +46,7 @@ public class ProductReaderWriter {
         return Product[0];
     }
 
-    public boolean writeToFirebase(Product newProduct){
+    public boolean writeToFirebase(Product newProduct, String storeID){
         mAuth = FirebaseAuth.getInstance();
         String productID = newProduct.getProductID();
         String userID = mAuth.getCurrentUser().getUid().toString(); //Remember For later null ptr.
@@ -55,6 +55,7 @@ public class ProductReaderWriter {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot){
                 data.child("Products").child(productID).setValue(newProduct);
+                data.child(storeID).child("Products").child(productID).setValue(productID);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -65,9 +66,18 @@ public class ProductReaderWriter {
     }
 
 
-    public boolean writeProduct(Product product, String product_id){
+    public boolean writeProduct(Product product, String product_id, String StoreUUID){
         data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference();
         data.child("Products").child(product_id).setValue(product);
+        data.child("Store").child(StoreUUID).child("Products").child(product_id).setValue(product_id);
+
+        return true;
+    }
+
+    public boolean removeProduct(String product_id,String StoreUUID){
+        data = FirebaseDatabase.getInstance(SERVER_ADDRESS).getReference();
+        data.child("Products").child(product_id).removeValue();
+        data.child("Store").child(StoreUUID).child("Products").child(product_id).removeValue();
         return true;
     }
 

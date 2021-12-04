@@ -12,11 +12,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChangeEmail extends AppCompatActivity {
 
@@ -51,9 +55,25 @@ public class ChangeEmail extends AppCompatActivity {
                 else{
                     user.updateEmail(input);
                     FirebaseDatabase.getInstance().getReference("Users").child(uid).child(String.valueOf("emailAddress")).setValue(input);
+                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Log.d("TAG", String.valueOf(snapshot.getValue()));
+                            if (snapshot.getValue().equals("1")) {
+                                Intent intent = new Intent(ChangeEmail.this, BuyerDashboard.class);
+                                startActivity(intent);
+                            }
+                            if (snapshot.getValue().equals("0")) {
+                                Intent intent = new Intent(ChangeEmail.this, SellerDashboard.class);
+                                startActivity(intent);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    Intent intent = new Intent(ChangeEmail.this, BuyerDashboard.class);
-                    startActivity(intent);
+                        }
+
+                    });
                 }
 
             }

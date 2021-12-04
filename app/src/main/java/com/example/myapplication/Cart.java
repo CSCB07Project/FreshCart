@@ -90,7 +90,8 @@ public class Cart extends AppCompatActivity {
                     public void onCancelled(DatabaseError databaseError) {}
                 });
 
-
+                // reset buyer cart
+                FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").removeValue();
 
                 Intent intent = new Intent(Cart.this, PInfo.class);
                 startActivity(intent);

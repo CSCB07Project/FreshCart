@@ -2,18 +2,24 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Dashboard_Seller.SellerDashboard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChangeName extends AppCompatActivity {
 
@@ -44,8 +50,25 @@ public class ChangeName extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference("Users").child(uid).child(String.valueOf("firstName")).setValue(input1);
                     FirebaseDatabase.getInstance().getReference("Users").child(uid).child(String.valueOf("lastName")).setValue(input2);
 
-                    Intent intent = new Intent(ChangeName.this, BuyerDashboard.class);
-                    startActivity(intent);
+                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("accountType").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Log.d("TAG", String.valueOf(snapshot.getValue()));
+                            if (snapshot.getValue().equals("1")) {
+                                Intent intent = new Intent(ChangeName.this, BuyerDashboard.class);
+                                startActivity(intent);
+                            }
+                            if (snapshot.getValue().equals("0")) {
+                                Intent intent = new Intent(ChangeName.this, SellerDashboard.class);
+                                startActivity(intent);
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+
+                    });
                 }
             }
         });

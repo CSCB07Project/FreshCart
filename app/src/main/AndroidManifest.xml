@@ -3,7 +3,7 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity
+            android:name=".Dashboard_Seller.EditDeleteProduct"
+            android:exported="false" />
         <activity
             android:name=".Dashboard_Seller.CreateProduct"
             android:exported="false" />
@@ -45,11 +48,12 @@
             android:noHistory="true" />
         <activity
             android:name=".Dashboard_Seller.SellerDashboard"
+            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".BuyerDashboard"
-            android:launchMode="singleTask"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ChangeUsername"
             android:exported="false"
@@ -78,7 +82,7 @@
         <activity
             android:name=".PInfo"
             android:launchMode="singleTask"
-            android:parentActivityName=".BuyerDashboard" >
+            android:parentActivityName=".BuyerDashboard">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data

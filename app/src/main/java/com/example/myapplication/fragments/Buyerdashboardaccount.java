@@ -14,7 +14,6 @@ import com.example.myapplication.ChangeEmail;
 import com.example.myapplication.ChangeName;
 import com.example.myapplication.ChangePassword;
 import com.example.myapplication.ChangeUsername;
-import com.example.myapplication.Dashboard_Seller.pages.Sellerdashboardaccount;
 import com.example.myapplication.LoadingUserActivity;
 import com.example.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
