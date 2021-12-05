@@ -43,7 +43,7 @@ SingleProductPage extends AppCompatActivity {
         String productprice = "";
         String productdescription = "";
         String productid = "";
-
+        String storeid = "";
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -52,6 +52,7 @@ SingleProductPage extends AppCompatActivity {
             productprice = "$" + extras.getString("mPrice");
             productdescription = extras.getString("mDesc");
             productid = extras.getString("mId");
+            storeid =  extras.getString("StoreName");
         }
 
         TextView tv = (TextView) findViewById(R.id.ProductNameText);
@@ -94,13 +95,14 @@ SingleProductPage extends AppCompatActivity {
         });
         addtocart = (Button) findViewById(R.id.addtocartbutton);
         String finalproductid = productid;
+        String finalstoreid = storeid;
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
                 DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
-                // if (ref.child("Products").child(finalproductid).child(String.valueOf("store")) != ref.child("Store").child(finalstoreid).child(String.valueOf("storeID"))) {
+                 if (ref.child("Products").child(finalproductid).child(String.valueOf("store")) != ref.child("Store").child(finalstoreid).child(String.valueOf("storeID"))) {
 
                 LayoutInflater inflater = (LayoutInflater)
                         getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -110,32 +112,33 @@ SingleProductPage extends AppCompatActivity {
                 boolean focusable = true;
                 PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
                 popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-//                    yes = (Button) findViewById(R.id.YesButton);
-//                    yes.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            ref.child("Users").child(uid).child("cart").setValue(null);
-//                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-//                        }
-//                    });
-                no = (Button) findViewById(R.id.NoButton);
+                    yes = (Button) popupView.findViewById(R.id.YesButton);
+                    yes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ref.child("Users").child(uid).child("cart").setValue(null);
+                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                           popupWindow.dismiss();
+                        }
+                    });
+                no = (Button) popupView.findViewById(R.id.NoButton);
                 no.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         popupWindow.dismiss();
                     }
                 });
-// } else {
-//                if (count != 0) {
-//                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-//                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-//                    startActivity(intent);
-//                } else {
-//                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
-//                }
+ } else {
+                if (count != 0) {
+                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                }
 
             }
-            // }
+             }
         });
     }
 }
