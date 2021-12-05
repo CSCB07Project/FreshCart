@@ -61,6 +61,7 @@ public class Cart extends AppCompatActivity {
             public void onClick(View v) {
                 if(mID.size()==0) Toast.makeText(Cart.this, "Cart is Empty", Toast.LENGTH_SHORT).show();
                 else{
+                    Toast.makeText(Cart.this, "Order Placed", Toast.LENGTH_SHORT).show();
                     Log.d("TAG", "onClick: ");
                     String orderId = UUID.randomUUID().toString().replaceAll("-", "");
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -99,7 +100,7 @@ public class Cart extends AppCompatActivity {
                     Intent intent = new Intent(Cart.this, PInfo.class);
                     startActivity(intent);
                 }
-                }
+            }
 
         });
 
