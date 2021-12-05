@@ -58,6 +58,7 @@ public class StoreLoader extends AppCompatActivity {
                     }
 
                 }catch(Exception e){
+                    Log.e("Exception", "EXCEPTION");
                     FirebaseAuth.getInstance().signOut();
 
                 }

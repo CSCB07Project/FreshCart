@@ -48,7 +48,6 @@
             android:noHistory="true" />
         <activity
             android:name=".Dashboard_Seller.SellerDashboard"
-            android:launchMode="singleTask"
             android:exported="false" />
         <activity
             android:name=".BuyerDashboard"
