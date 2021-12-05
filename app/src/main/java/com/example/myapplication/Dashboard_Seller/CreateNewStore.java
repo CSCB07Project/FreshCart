@@ -181,7 +181,6 @@ public class CreateNewStore extends AppCompatActivity {
         Intent intent = new Intent(CreateNewStore.this, SellerDashboard.class);
         intent.putExtra("uuid", uuid_store);
 
-
         startActivity(intent);
         finish();
     }

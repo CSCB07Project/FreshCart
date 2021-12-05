@@ -97,7 +97,7 @@ public class Sellerdashboardhome extends Fragment {
                     }
                 }catch(Exception e){
                     FirebaseAuth.getInstance().signOut();
-                }
+              }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -111,8 +111,7 @@ public class Sellerdashboardhome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myFragmentView =  inflater.inflate(R.layout.fragment_sellerdashboardhome, container, false);
-        StoreUUID  = getArguments().getString("udid");
-        load_status(myFragmentView, StoreUUID);
+
         recycle_view_starer();
         return myFragmentView;
     }
@@ -126,12 +125,16 @@ public class Sellerdashboardhome extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+        StoreUUID  = getArguments().getString("udid");
+        load_status(myFragmentView, StoreUUID);
         adapter.startListening();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onResume(){
         super.onResume();
+
         adapter.notifyDataSetChanged();
     }
 
