@@ -72,31 +72,6 @@ public class PInfo extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.storeNN);
         tv.setText(storeName);
 
-
-        Button btn = (Button) findViewById(R.id.nextMore);
-        String finalEInfo = eInfo;
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PInfo.this, MoreInfoStore.class);
-                intent.putExtra("eInfo", finalEInfo);
-                startActivity(intent);
-            }
-        });
-
-        FloatingActionButton checkCart = (FloatingActionButton) findViewById(R.id.checkCart);
-        String finalStoreName = storeName;
-        String finalStoreId = storeId;
-        checkCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PInfo.this, Cart.class);
-                intent.putExtra("storeName", finalStoreName);
-                intent.putExtra("storeID", finalStoreId);
-                startActivity(intent);
-            }
-        });
-
         FirebaseDatabase.getInstance().getReference("Store").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -136,6 +111,41 @@ public class PInfo extends AppCompatActivity {
 
 
         });
+
+        Button btn = (Button) findViewById(R.id.nextMore);
+        String finalEInfo = eInfo;
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PInfo.this, MoreInfoStore.class);
+                intent.putExtra("eInfo", finalEInfo);
+                intent.putExtra("name", storeName1);
+                intent.putExtra("address", storeAddress);
+                intent.putExtra("country", storeCountry);
+                intent.putExtra("province", storeProvince);
+                intent.putExtra("city", storeCity);
+                intent.putExtra("postal", storePostal);
+                intent.putExtra("contact", storeContact);
+
+
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton checkCart = (FloatingActionButton) findViewById(R.id.checkCart);
+        String finalStoreName = storeName;
+        String finalStoreId = storeId;
+        checkCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PInfo.this, Cart.class);
+                intent.putExtra("storeName", finalStoreName);
+                intent.putExtra("storeID", finalStoreId);
+                startActivity(intent);
+            }
+        });
+
+
 
         String finalStoreName1 = storeName;
         FirebaseDatabase.getInstance().getReference("Products").addValueEventListener(new ValueEventListener() {
