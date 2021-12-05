@@ -7,22 +7,23 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="397dp"
+        android:layout_height="165dp"
+        android:background="@drawable/accountdeclarationselection"
+        android:backgroundTint="@color/black"
+        android:backgroundTintMode="screen"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="9dp">
 
         <TextView
             android:id="@+id/addtocartquestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="388dp"
+            android:layout_height="82dp"
+            android:backgroundTint="@color/black"
             android:text="This product is from a different store, do you still want to add it?"
+            android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -31,6 +32,7 @@
             android:id="@+id/YesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:text="Yes"
             android:textColor="#FFFFFF" />
 
@@ -38,6 +40,7 @@
             android:id="@+id/NoButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
             android:text="No"
             android:textColor="#FFFFFF" />
     </LinearLayout>
