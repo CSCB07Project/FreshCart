@@ -10,37 +10,58 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView23"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            android:scaleX="1.3"
-            android:scaleY="1.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/storesvector1" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="115dp"
-            android:scaleX="1.3"
-            android:scaleY="1.6"
+            android:layout_height="wrap_content"
+            android:scaleX="1.2"
+            android:scaleY="5"
+            android:src="@drawable/buyerframestore"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/storesvector2" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView22"
+            android:layout_width="344dp"
+            android:layout_height="548dp"
+            android:src="@drawable/accountdeclarationselection"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cbUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:layout_marginTop="144dp"
+            android:layout_marginEnd="112dp"
             android:text="Change Username"
-            android:textSize="30dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintHorizontal_bias="0.36"
+            app:layout_constraintStart_toStartOf="@+id/imageView22"
+            app:layout_constraintTop_toTopOf="@+id/imageView22" />
+
+        <TextView
+            android:id="@+id/cbUsername3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Update user information"
+
+            android:textColor="#00A04B"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/cbUsername"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.355"
+            app:layout_constraintStart_toStartOf="@+id/imageView22"
+            app:layout_constraintTop_toBottomOf="@+id/imageView23"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/bUsername"
@@ -48,22 +69,25 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/vectorarrow"
-            app:backgroundTint="#ffffff"
+            app:backgroundTint="#EBEEEC "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.308" />
 
         <TextView
             android:id="@+id/cbName"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:text="Change Name"
-            android:textSize="30dp"
+
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintStart_toStartOf="@+id/imageView22"
             app:layout_constraintTop_toBottomOf="@+id/cbUsername" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -73,55 +97,59 @@
             android:layout_marginTop="12dp"
             android:clickable="true"
             android:src="@drawable/vectorarrow"
-            app:backgroundTint="#ffffff"
+            app:backgroundTint="#EBEEEC "
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bUsername" />
 
         <TextView
             android:id="@+id/cbEM"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="44dp"
             android:text="Change Email"
-            android:textSize="30dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.149"
+            app:layout_constraintStart_toStartOf="@+id/imageView22"
             app:layout_constraintTop_toBottomOf="@+id/cbName" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/bEM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:clickable="true"
             android:src="@drawable/vectorarrow"
-            app:backgroundTint="#ffffff"
+            app:backgroundTint="#EBEEEC "
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bName" />
 
         <TextView
             android:id="@+id/cbPS"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="48dp"
             android:text="Change Password"
-            android:textSize="30dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.168"
+            app:layout_constraintStart_toStartOf="@+id/imageView22"
             app:layout_constraintTop_toBottomOf="@+id/cbEM" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/bPS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="20dp"
             android:clickable="true"
             android:src="@drawable/vectorarrow"
-            app:backgroundTint="#ffffff"
+            app:backgroundTint="#EBEEEC "
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.952"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bEM" />
 
@@ -129,12 +157,12 @@
             android:id="@+id/signout_userdash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="148dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginEnd="152dp"
+            android:layout_marginBottom="108dp"
             android:text="logout"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.476" />
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
