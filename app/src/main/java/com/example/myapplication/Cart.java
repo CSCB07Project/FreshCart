@@ -74,10 +74,11 @@ public class Cart extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference("Orders").child(orderId).setValue(newOrder);
 
                     // write to buyer
-                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("buyerOrders").child(orderId).setValue(orderId);
+                    //FirebaseDatabase.getInstance().getReference("Users").child(uid).child("buyerOrders").child(orderId).setValue(orderId);
 
                     //write to seller
 
+                    /*
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
                     Query q = ref.orderByChild("storeID").equalTo(finalStoreID);
                     q.addValueEventListener( new ValueEventListener(){
@@ -93,6 +94,8 @@ public class Cart extends AppCompatActivity {
                         @Override
                         public void onCancelled(DatabaseError databaseError) {}
                     });
+
+                     */
 
                     // reset buyer cart
                     FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").removeValue();
