@@ -20,11 +20,26 @@ public class MoreInfoStore extends AppCompatActivity {
 
         String storeId = "";
         String eInfo = "";
+        String name = "";
+        String country = "";
+        String province = "";
+        String city = "";
+        String postal = "";
+        String contact = "";
+        String address = "";
+
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             storeId = extras.getString("storeID");
             eInfo = extras.getString("eInfo");
+            name = extras.getString("name");
+            country = extras.getString("country");
+            address = extras.getString("address");
+            province = extras.getString("province");
+            city = extras.getString("city");
+            postal = extras.getString("postal");
+            contact = extras.getString("contact");
         }
 
         /*
@@ -75,9 +90,22 @@ public class MoreInfoStore extends AppCompatActivity {
         });
          */
 
-        TextView tv = (TextView) findViewById(R.id.storeMI);
-        tv.setText(eInfo);
+        TextView tv = (TextView) findViewById(R.id.StoreName2);
+        tv.setText(name);
+        TextView tv1 = (TextView) findViewById(R.id.StoreAddress2);
+        tv1.setText(address);
+        TextView tv2 = (TextView) findViewById(R.id.StoreCountry2);
+        tv2.setText(country);
+        TextView tv3 = (TextView) findViewById(R.id.StoreProvince2);
+        tv3.setText(province);
+        TextView tv4 = (TextView) findViewById(R.id.StoreCity2);
+        tv4.setText(city);
+        TextView tv5 = (TextView) findViewById(R.id.StorePostalCode2);
+        tv5.setText(postal);
+        TextView tv6 = (TextView) findViewById(R.id.ContactNumber2);
+        tv6.setText(contact);
     }
 }
+
 
 
