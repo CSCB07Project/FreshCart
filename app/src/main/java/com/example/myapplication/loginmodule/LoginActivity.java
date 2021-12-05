@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.loginmodule;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +12,12 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.myapplication.Dashboard_Seller.SellerDashboard;
+import com.example.myapplication.AccountDeclaration;
+import com.example.myapplication.BuyerDashboard;
 import com.example.myapplication.Dashboard_Seller.StoreLoader;
+import com.example.myapplication.LoadingUserActivity;
+import com.example.myapplication.R;
+import com.example.myapplication.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,7 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Contract.View {
     private FirebaseAuth mAuth;
     private DatabaseReference data;
     private ImageButton signin;
@@ -34,7 +38,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView invalid;
 
     private int AccountType;
-
+    private LoginModel model;
+    private LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,61 +58,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         register = (ImageButton) findViewById(R.id.login_registerbtn);
         register.setOnClickListener(this);
         //progressBar = () // Add in progressbar
+        model = new LoginModel();
+        presenter = new LoginPresenter(model, this);
 
         mAuth = FirebaseAuth.getInstance();
     }
     @Override
-    public void onClick (View v) {
-        switch(v.getId()){
-            case R.id.login_registerbtn:
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.loginbtn:
-                userLogin();
-                break;
-        }
-    }
-    public void userLogin(){
-        String email = editEmail.getText().toString().trim();
-        String password = editPassword.getText().toString().trim();
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Log.i("Login","Successfully Logged in");
-                    getAccountDeclaration();
-                }
-                else{
-                    invalid.setVisibility(View.VISIBLE);
-                    Log.e("Login", "Credentials Not Valid");
-                }
-            }
-        });
+    public String getUsername() {
+        return editEmail.getText().toString().trim();
     }
 
-    //Refactor and put into Account function.
-    public void getAccountDeclaration(){
-        String uid = mAuth.getCurrentUser().getUid().toString();
-        //Get the usertype from the real time db
-        data = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
-        data.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot){
-                String obtained = snapshot.child("accountType").getValue().toString();
-                AccountType = Integer.parseInt(obtained);
-                router(AccountType);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("Error", "Cannot connect to server and set type.");
-            }
-        });
+    @Override
+    public String getPassword() {
+        return editPassword.getText().toString().trim();
     }
 
+    @Override
+    public void displayError(String message) {
+        invalid.setText(message);
+        invalid.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void router(int type){
-        Log.d("Type", ""+type);
         if(type == -1){
             Intent intent = new Intent(LoginActivity.this, AccountDeclaration.class);
             startActivity(intent);
@@ -117,6 +90,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else{
             Intent intent = new Intent(LoginActivity.this, BuyerDashboard.class);
             startActivity(intent);
+        }
+    }
+    @Override
+    public void onClick (View v) {
+        switch(v.getId()){
+            case R.id.login_registerbtn:
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.loginbtn:
+                presenter.authenticateLogin(getUsername(), getPassword());
+                break;
         }
     }
 
@@ -133,4 +118,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+
 }

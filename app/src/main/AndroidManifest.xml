@@ -100,7 +100,7 @@
             android:name=".LoadingUserActivity"
             android:noHistory="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".loginmodule.LoginActivity"
             android:exported="false"
             android:noHistory="true" />
         <activity
