@@ -1,28 +1,21 @@
 package com.example.myapplication.fragments;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.myapplication.LoginActivity;
+import com.example.myapplication.loginmodule.LoginActivity;
 import com.example.myapplication.Order;
-
-import com.example.myapplication.Dashboard_Seller.pages.Sellerdashboardorders;
 
 import com.example.myapplication.R;
 import com.example.myapplication.RecyclerViewAdapterOrder;
-import com.example.myapplication.Store;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
