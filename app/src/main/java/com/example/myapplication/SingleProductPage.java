@@ -114,7 +114,7 @@ SingleProductPage extends AppCompatActivity {
 
                 obtained = snapshot.child("Products").child(finalproductid).child("store").getValue().toString();
                 if(!(obtained == null) || (obtained.compareTo("-1") == 0)){
-                     if(obtained == finalstoreid){
+                     if(obtained.equals(finalstoreid)){
                         if (count != 0) {
                             ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
                             Intent intent = new Intent(SingleProductPage.this, PInfo.class);
@@ -122,8 +122,10 @@ SingleProductPage extends AppCompatActivity {
                         } else {
                             Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
                         }
+                         Log.d("TAG", obtained);
+                         Log.d("TAG",finalstoreid);
                     }
-                   else if(obtained != finalstoreid){
+                   else if (!(obtained.equals(finalstoreid))){
                         LayoutInflater inflater = (LayoutInflater)
                             getSystemService(LAYOUT_INFLATER_SERVICE);
                     View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
@@ -148,8 +150,8 @@ SingleProductPage extends AppCompatActivity {
                             popupWindow.dismiss();
                         }
                     });
-//                        Log.d("TAG", obtained);
-//                        Log.d("TAG",finalstoreid);
+                       Log.d("TAG", obtained);
+                     Log.d("TAG",finalstoreid);
                     }
                 }
         }
