@@ -57,7 +57,7 @@ SingleProductPage extends AppCompatActivity {
             productprice = "$" + extras.getString("mPrice");
             productdescription = extras.getString("mDesc");
             productid = extras.getString("mId");
-            storeid = extras.getString("StoreName");
+            storeid = extras.getString("StoreID");
         }
 
         TextView tv = (TextView) findViewById(R.id.ProductNameText);
@@ -111,11 +111,19 @@ SingleProductPage extends AppCompatActivity {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot){
             String obtained;
-            //String obtained2;
+
                 obtained = snapshot.child("Products").child(finalproductid).child("store").getValue().toString();
-                //obtained2 = snapshot.child("Store").child(finalstoreid).child("storeID").getValue().toString();
                 if(!(obtained == null) || (obtained.compareTo("-1") == 0)){
-                    if(obtained != finalstoreid){
+                     if(obtained == finalstoreid){
+                        if (count != 0) {
+                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                            Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                   else if(obtained != finalstoreid){
                         LayoutInflater inflater = (LayoutInflater)
                             getSystemService(LAYOUT_INFLATER_SERVICE);
                     View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
@@ -140,17 +148,8 @@ SingleProductPage extends AppCompatActivity {
                             popupWindow.dismiss();
                         }
                     });
-                        Log.d("TAG", obtained);
-                        Log.d("TAG",finalstoreid);
-                    }
-                    else{
-                        if (count != 0) {
-                        ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                        Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
-                    }
+//                        Log.d("TAG", obtained);
+//                        Log.d("TAG",finalstoreid);
                     }
                 }
         }
