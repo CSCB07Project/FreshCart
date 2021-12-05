@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,44 +59,48 @@ public class Cart extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("TAG", "onClick: ");
-                String orderId = UUID.randomUUID().toString().replaceAll("-", "");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                String date = formatter.format(new Date());
-                Order newOrder = new Order(orderId, finalStoreID, uid, 0, total_price, finalStoreName, date);
-                for(int i = 0; i<mID.size();i++){
-                    newOrder.addProduct(mID.get(i),Integer.parseInt(mCount.get(i)));
-                }
-                // write to orders
-                FirebaseDatabase.getInstance().getReference("Orders").child(orderId).setValue(newOrder);
-
-                // write to buyer
-                FirebaseDatabase.getInstance().getReference("Users").child(uid).child("buyerOrders").child(orderId).setValue(orderId);
-
-                //write to seller
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
-                Query q = ref.orderByChild("storeID").equalTo(finalStoreID);
-                q.addValueEventListener( new ValueEventListener(){
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds : dataSnapshot.getChildren() ){
-                            String key = ds.getKey();
-                            Log.d("TAG", key);
-                            ref.child(key).child("sellerOrders").child(orderId).setValue(orderId);
-                        }
+                if(mID.size()==0) Toast.makeText(Cart.this, "Cart is Empty", Toast.LENGTH_SHORT).show();
+                else{
+                    Log.d("TAG", "onClick: ");
+                    String orderId = UUID.randomUUID().toString().replaceAll("-", "");
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String date = formatter.format(new Date());
+                    Order newOrder = new Order(orderId, finalStoreID, uid, 0, total_price, finalStoreName, date);
+                    for(int i = 0; i<mID.size();i++){
+                        newOrder.addProduct(mID.get(i),Integer.parseInt(mCount.get(i)));
                     }
+                    // write to orders
+                    FirebaseDatabase.getInstance().getReference("Orders").child(orderId).setValue(newOrder);
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {}
-                });
+                    // write to buyer
+                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("buyerOrders").child(orderId).setValue(orderId);
 
-                // reset buyer cart
-                FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").removeValue();
+                    //write to seller
 
-                Intent intent = new Intent(Cart.this, PInfo.class);
-                startActivity(intent);
-            }
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+                    Query q = ref.orderByChild("storeID").equalTo(finalStoreID);
+                    q.addValueEventListener( new ValueEventListener(){
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for(DataSnapshot ds : dataSnapshot.getChildren() ){
+                                String key = ds.getKey();
+                                Log.d("TAG", key);
+                                ref.child(key).child("sellerOrders").child(orderId).setValue(orderId);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {}
+                    });
+
+                    // reset buyer cart
+                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").removeValue();
+
+                    Intent intent = new Intent(Cart.this, PInfo.class);
+                    startActivity(intent);
+                }
+                }
+
         });
 
         FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").addValueEventListener(new ValueEventListener() {
