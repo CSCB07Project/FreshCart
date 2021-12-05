@@ -48,13 +48,7 @@ public class OrderCardAdapter extends FirebaseRecyclerAdapter<Order,OrderCardAda
                 if(task.isSuccessful()){
                     Buyer found = task.getResult().getValue(Buyer.class);
                     holder.store_name.setText(found.getUsername());
-                    /*
-                    for(DataSnapshot d: task.getResult().getChildren()){
-                        Buyer o = d.getValue(Buyer.class);
-                        Log.d("WHAT IS USERNAME", o.getUsername());
-                        holder.store_name.setText(o.getUsername());
-                    }
-                    */
+
                 }
                 else{
                     Log.d("Failed", "Task Failed");

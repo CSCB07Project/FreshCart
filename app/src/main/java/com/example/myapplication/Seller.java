@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Seller extends Account{
     String storeID;
-    ArrayList<String> orders = new ArrayList<String>();
+    //ArrayList<String> orders = new ArrayList<String>();
     public Seller(String userid, String username,String firstName, String lastName, String emailAddress, String storeID) {
         super(userid, username,firstName, lastName, emailAddress, 0);
         this.storeID = storeID;
-        orders.add("-1");
+        //orders.add("-1");
     }
     @NonNull
     @Override
@@ -21,6 +21,7 @@ public class Seller extends Account{
     public String getStoreID() {
         return storeID;
     }
+    /*
     public void addOrder(String id){
         orders.remove("-1");
         orders.add(id);
@@ -36,4 +37,5 @@ public class Seller extends Account{
     public void addOrders(String id){
         this.orders.add(id);
     }
+     */
 }
