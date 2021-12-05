@@ -3,10 +3,12 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -93,12 +95,17 @@ SingleProductPage extends AppCompatActivity {
         addtocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    String uid = user.getUid();
-                    DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
-                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                    startActivity(intent);
+                Toast toast = Toast.makeText(SingleProductPage.this, "Items added to cart\nDon't forget to place order", Toast.LENGTH_SHORT);
+                TextView vt = (TextView) toast.getView().findViewById(android.R.id.message);
+                if( vt != null) vt.setGravity(Gravity.CENTER);
+                toast.show();
+                //Toast.makeText(SingleProductPage.this, "Items added to cart\nDon't Forget to place order", Toast.LENGTH_SHORT).show();
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
+                DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
+                ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                startActivity(intent);
 
             }
         });

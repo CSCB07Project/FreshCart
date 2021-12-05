@@ -43,12 +43,11 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/loginactivity_email"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/signinbox"
-        />
+        app:layout_constraintTop_toTopOf="@+id/signinbox" />
 
     <EditText
         android:id="@+id/editEmail"
@@ -69,8 +68,8 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/signinbox"
         app:srcCompat="@drawable/loginactivity_password" />
@@ -94,11 +93,14 @@
         android:id="@+id/loginbtn"
         android:layout_width="184dp"
         android:layout_height="51dp"
-        android:layout_marginStart="68dp"
         android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="@+id/signinbox"
-        app:layout_constraintStart_toStartOf="@+id/signinbox"
+        app:layout_constraintEnd_toEndOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/loginactivity_loginbutton"
         tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
@@ -106,20 +108,20 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="168dp"
         android:layout_marginBottom="70dp"
         android:text="@string/loginactivity_or"
         app:layout_constraintBottom_toBottomOf="@+id/signinbox"
-        app:layout_constraintEnd_toEndOf="@+id/signinbox" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/login_registerbtn"
         android:layout_width="133dp"
         android:layout_height="54dp"
-        android:layout_marginEnd="148dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/signinbox"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/loginactivity_registerbtn"
         tools:ignore="SpeakableTextPresentCheck" />
 
