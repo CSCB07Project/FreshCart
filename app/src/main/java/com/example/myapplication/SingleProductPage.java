@@ -108,59 +108,65 @@ SingleProductPage extends AppCompatActivity {
                 String uid = user.getUid();
                 DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
                 ref.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot snapshot){
-            String obtained;
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String cartproducts = snapshot.child("Users").child(uid).child("cart").getValue().toString();
+                        String newproducttobeaddedstoreid = snapshot.child("Products").child(finalproductid).child("store").getValue().toString();
+                        if ((cartproducts == null) || (cartproducts.compareTo("-1") == 0)) {
+                            if (count != 0) {
+                                ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                                Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                            }
+                        } else if (!(cartproducts == null) || (cartproducts.compareTo("-1") == 0)) {
+                            String productincartproductid = snapshot.child("Users").child(uid).child("cart").child(finalproductid).toString();
+                            String productincartstoreid = snapshot.child("Products").child(productincartproductid).child("store").getValue().toString();
+                            if (newproducttobeaddedstoreid.equals(productincartstoreid)) {
+                                if (count != 0) {
+                                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                                }
+                            } else if (!(newproducttobeaddedstoreid.equals(productincartstoreid))) {
+                                LayoutInflater inflater = (LayoutInflater)
+                                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                                View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
+                                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                boolean focusable = true;
+                                PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                                yes = (Button) popupView.findViewById(R.id.YesButton);
+                                yes.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        ref.child("Users").child(uid).child("cart").setValue(null);
+                                        ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                                        popupWindow.dismiss();
+                                    }
+                                });
+                                no = (Button) popupView.findViewById(R.id.NoButton);
+                                no.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        popupWindow.dismiss();
+                                    }
+                                });
+                            }
 
-                obtained = snapshot.child("Products").child(finalproductid).child("store").getValue().toString();
-                if(!(obtained == null) || (obtained.compareTo("-1") == 0)){
-                     if(obtained.equals(finalstoreid)){
-                        if (count != 0) {
-                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                            Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
                         }
-                         Log.d("TAG", obtained);
-                         Log.d("TAG",finalstoreid);
-                    }
-                   else if (!(obtained.equals(finalstoreid))){
-                        LayoutInflater inflater = (LayoutInflater)
-                            getSystemService(LAYOUT_INFLATER_SERVICE);
-                    View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
-                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                    boolean focusable = true;
-                    PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                    yes = (Button) popupView.findViewById(R.id.YesButton);
-                    yes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ref.child("Users").child(uid).child("cart").setValue(null);
-                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                            popupWindow.dismiss();
-                        }
-                    });
-                    no = (Button) popupView.findViewById(R.id.NoButton);
-                    no.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            popupWindow.dismiss();
-                        }
-                    });
-                       Log.d("TAG", obtained);
-                     Log.d("TAG",finalstoreid);
-                    }
-                }
-        }
-        @Override
-        public void onCancelled(@NonNull DatabaseError error) {
-            Log.d("Error", "Cannot connect to server and set type.");
-        }
-    });
 
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("Error", "Cannot connect to server and set type.");
+                    }
+                });
 
 
             }
