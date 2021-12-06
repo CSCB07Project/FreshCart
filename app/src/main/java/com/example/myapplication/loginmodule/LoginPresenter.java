@@ -9,7 +9,7 @@ public class LoginPresenter implements Contract.Presenter {
     }
     @Override
     public void authenticateLogin(String email, String password) {
-        if(email.equals(null) || email.equals("") || password.equals(null) || password.equals("") ){
+        if(email == null || email.equals("") || password == null || password.equals("") ){
             view.displayError("Blank Fields");
         }
         else{
