@@ -158,6 +158,7 @@ public class Cart extends AppCompatActivity {
                 RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerViewCartz);
                 recyclerView.setLayoutManager(new LinearLayoutManager(Cart.this));
                 recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -167,6 +168,13 @@ public class Cart extends AppCompatActivity {
 
         });
 
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
     }
 }

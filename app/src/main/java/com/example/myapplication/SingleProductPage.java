@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +28,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class
 
@@ -38,17 +43,16 @@ SingleProductPage extends AppCompatActivity {
     Button addtocart;
     Button yes;
     Button no;
-
+    String productimage = "";
+    String productname = "";
+    String productprice = "";
+    String productdescription = "";
+    String productid = "";
+    String storeid = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_product_page);
-        String productimage = "";
-        String productname = "";
-        String productprice = "";
-        String productdescription = "";
-        String productid = "";
-        String storeid = "";
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -107,31 +111,28 @@ SingleProductPage extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
                 DatabaseReference ref = FirebaseDatabase.getInstance("https://b07project-39fda-default-rtdb.firebaseio.com/").getReference();
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String cartproducts = snapshot.child("Users").child(uid).child("cart").getValue().toString();
-                        String newproducttobeaddedstoreid = snapshot.child("Products").child(finalproductid).child("store").getValue().toString();
-                        if ((cartproducts == null) || (cartproducts.compareTo("-1") == 0)) {
-                            if (count != 0) {
-                                ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                                Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if(task.isSuccessful()){
+                            Buyer curr = task.getResult().child("Users").child(uid).getValue(Buyer.class);
+                            HashMap<String, Integer> cart = curr.getCart();
+
+                            //Find previous productid from cart
+                            String prev_prod_id = "";
+                            for(String id: cart.keySet()){
+                                prev_prod_id = id;
                             }
-                        } else if (!(cartproducts == null) || (cartproducts.compareTo("-1") == 0)) {
-                            String productincartproductid = snapshot.child("Users").child(uid).child("cart").child(finalproductid).toString();
-                            String productincartstoreid = snapshot.child("Products").child(productincartproductid).child("store").getValue().toString();
-                            if (newproducttobeaddedstoreid.equals(productincartstoreid)) {
-                                if (count != 0) {
-                                    ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                                    Intent intent = new Intent(SingleProductPage.this, PInfo.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
-                                }
-                            } else if (!(newproducttobeaddedstoreid.equals(productincartstoreid))) {
+                            Product prev = new Product();
+                            if(!prev_prod_id.equals("-1")){
+                                prev = task.getResult().child("Products").child(prev_prod_id).getValue(Product.class);
+                            }
+
+                            if(cart.size() == 1 && cart.containsKey("-1") && count != 0){
+                                cart.put(productid, count);
+                                cart.remove("-1");
+                                ref.child("Users").child(uid).child("cart").setValue(cart);
+                            }else if(!task.getResult().child("Products").child(productid).child("store").getValue().toString().equals(prev.getStore())){
                                 LayoutInflater inflater = (LayoutInflater)
                                         getSystemService(LAYOUT_INFLATER_SERVICE);
                                 View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
@@ -156,9 +157,71 @@ SingleProductPage extends AppCompatActivity {
                                         popupWindow.dismiss();
                                     }
                                 });
+
+                            }
+                            else{
+                                cart.put(productid, count);
+                                ref.child("Users").child(uid).child("cart").setValue(cart);
                             }
 
                         }
+                        else{
+                            Log.d("ERROR", "COULD NOT FIND");
+                        }
+                    }
+                });
+                /*
+                ref.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            Buyer curr = snapshot.child(uid).getValue(Buyer.class);
+                            HashMap<String, Integer> cart = curr.getCart();
+
+
+
+
+                            //Find previous productid from cart
+                            String prev_prod_id = "";
+                            for(String id: cart.keySet()){
+                                prev_prod_id = id;
+                            }
+                            Product prev = s.child("Products").child(prev_prod_id).getValue(Product.class);
+                            if(cart.size() == 1 && cart.containsKey("-1") && count != 0){
+                                cart.put(productid, count);
+                                cart.remove("-1");
+                                ref.child("Users").child(uid).child("cart").setValue(cart);
+                            }else if(!s.child("Products").child(productid).child("storeid").getValue().toString().equals(prev.getStore())){
+                                LayoutInflater inflater = (LayoutInflater)
+                                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                                View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
+                                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                boolean focusable = true;
+                                PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                                yes = (Button) popupView.findViewById(R.id.YesButton);
+                                yes.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        ref.child("Users").child(uid).child("cart").setValue(null);
+                                        ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                                        popupWindow.dismiss();
+                                    }
+                                });
+                                no = (Button) popupView.findViewById(R.id.NoButton);
+                                no.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        popupWindow.dismiss();
+                                    }
+                                });
+
+                            }
+                            else{
+                                cart.put(productid, count);
+                                ref.child("Users").child(uid).child("cart").setValue(cart);
+                            }
 
                     }
 
@@ -168,9 +231,11 @@ SingleProductPage extends AppCompatActivity {
                     }
                 });
 
-
+                */
             }
+
         });
+
     }
 
 }
