@@ -132,36 +132,47 @@ SingleProductPage extends AppCompatActivity {
                                 cart.put(productid, count);
                                 cart.remove("-1");
                                 ref.child("Users").child(uid).child("cart").setValue(cart);
+                                Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                                startActivity(intent);
                             }else if(!task.getResult().child("Products").child(productid).child("store").getValue().toString().equals(prev.getStore())){
-                                LayoutInflater inflater = (LayoutInflater)
-                                        getSystemService(LAYOUT_INFLATER_SERVICE);
-                                View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
-                                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                                boolean focusable = true;
-                                PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-                                popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-                                yes = (Button) popupView.findViewById(R.id.YesButton);
-                                yes.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        ref.child("Users").child(uid).child("cart").setValue(null);
-                                        ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
-                                        popupWindow.dismiss();
-                                    }
-                                });
-                                no = (Button) popupView.findViewById(R.id.NoButton);
-                                no.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        popupWindow.dismiss();
-                                    }
-                                });
-
+                                if(count == 0){
+                                    Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    LayoutInflater inflater = (LayoutInflater)
+                                            getSystemService(LAYOUT_INFLATER_SERVICE);
+                                    View popupView = inflater.inflate(R.layout.addtocart_popupbox, null);
+                                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                                    boolean focusable = true;
+                                    PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+                                    yes = (Button) popupView.findViewById(R.id.YesButton);
+                                    yes.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            ref.child("Users").child(uid).child("cart").setValue(null);
+                                            ref.child("Users").child(uid).child("cart").child(String.valueOf(finalproductid)).setValue(count);
+                                            popupWindow.dismiss();
+                                        }
+                                    });
+                                    no = (Button) popupView.findViewById(R.id.NoButton);
+                                    no.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            popupWindow.dismiss();
+                                        }
+                                    });
+                                }
+                            }
+                            else if(count == 0){
+                                Toast.makeText(SingleProductPage.this, "Please add an item into your cart", Toast.LENGTH_SHORT).show();
                             }
                             else{
                                 cart.put(productid, count);
                                 ref.child("Users").child(uid).child("cart").setValue(cart);
+                                Intent intent = new Intent(SingleProductPage.this, PInfo.class);
+                                startActivity(intent);
                             }
 
                         }
