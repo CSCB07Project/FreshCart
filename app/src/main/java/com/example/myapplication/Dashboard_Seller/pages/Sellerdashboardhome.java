@@ -96,7 +96,7 @@ public class Sellerdashboardhome extends Fragment {
                         //bar.setBackground();
                     }
                 }catch(Exception e){
-                    FirebaseAuth.getInstance().signOut();
+                   //FirebaseAuth.getInstance().signOut();
               }
             }
             @Override
