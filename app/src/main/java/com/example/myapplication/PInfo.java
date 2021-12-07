@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -69,8 +70,10 @@ public class PInfo extends AppCompatActivity {
                 .dontAnimate()
                 .into(iv);
 
-        TextView tv = (TextView) findViewById(R.id.storeNN);
-        tv.setText(storeName);
+        CollapsingToolbarLayout bar = (CollapsingToolbarLayout) findViewById(R.id.productinfoclient);
+        bar.setTitle(storeName);
+
+
 
         FirebaseDatabase.getInstance().getReference("Store").child(storeId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
