@@ -32,31 +32,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <TextView
+        android:id="@+id/StoreName2"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:translationX="35dp"
         android:translationY="130dp"
+        android:text="Name"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StoreName2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="text" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="0.058"/>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+
+    <TextView
+        android:id="@+id/StoreAddress2"
+        android:text="Address"
+        android:textSize="25dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:translationX="35dp"
@@ -66,19 +63,16 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
+        app:layout_constraintVertical_bias="0.058"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StoreAddress2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Address"
-            android:inputType="text" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+
+    <TextView
+        android:id="@+id/StoreCountry2"
+        android:text="Country"
+        android:textSize="25dp"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:translationX="15dp"
@@ -88,20 +82,14 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
+        app:layout_constraintVertical_bias="0.058"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StoreCountry2"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:hint="Country"
-            android:inputType="text"
-            android:translationX="0dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <TextView
+        android:id="@+id/StoreProvince2"
+        android:text="Province"
+        android:textSize="25dp"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:translationX="170dp"
@@ -111,21 +99,14 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StoreProvince2"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:hint="Province"
-            android:inputType="text"
-            android:translationX="0dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintVertical_bias="0.058"/>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+    <TextView
+        android:id="@+id/StoreCity2"
+        android:text="City"
+        android:textSize="25dp"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:translationX="15dp"
@@ -135,21 +116,14 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
+        app:layout_constraintVertical_bias="0.058"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StoreCity2"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:hint="City"
-            android:inputType="text"
-            android:translationX="0dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <TextView
+        android:id="@+id/StorePostalCode2"
+        android:text="Postal Code"
+        android:textSize="25dp"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:translationX="170dp"
@@ -159,20 +133,14 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
+        app:layout_constraintVertical_bias="0.058"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StorePostalCode2"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:hint="Postal Code"
-            android:inputType="text"
-            android:translationX="0dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <TextView
+        android:id="@+id/ContactNumber2"
+        android:text="Contact Number"
+        android:textSize="25dp"
         android:layout_width="300dp"
         android:layout_height="65dp"
         android:translationX="35dp"
@@ -184,26 +152,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.058"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
-        android:layout_height="65dp"
-        android:translationX="35dp"
-        android:translationY="430dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ContactNumber2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="Contact Number"
-            android:inputType="text" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
