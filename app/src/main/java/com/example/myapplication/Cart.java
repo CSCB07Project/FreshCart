@@ -99,6 +99,7 @@ public class Cart extends AppCompatActivity {
 
                     // reset buyer cart
                     FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").removeValue();
+                    FirebaseDatabase.getInstance().getReference("Users").child(uid).child("cart").child("-1").setValue(-1);
 
                     Intent intent = new Intent(Cart.this, PInfo.class);
                     startActivity(intent);
