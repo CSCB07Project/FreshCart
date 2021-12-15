@@ -15,4 +15,4 @@ git clone https://github.com/CSCB07Project/FreshCart.git
 * Seron Ath (SWE)
 * Andrew Effendi (SWE)
 * Nandhakishore K.S.(SWE)
-* Jason Kenneth (SWE)
+* Jason Kenneth Setiawan (SWE)
