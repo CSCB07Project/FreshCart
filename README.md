@@ -1,6 +1,6 @@
 # CSCB07 Project/ 
 
-Android App DevelopmentProject for Team FreshCart CSCB07 Fall 2021
+Android App Development Project for Team FreshCart CSCB07 Fall 2021
 
 # Installation
 Clone the repository and run it in Android Studio
