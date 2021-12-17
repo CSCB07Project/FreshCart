@@ -1,4 +1,4 @@
-# CSCB07 Project
+# CSCB07 Project/ App Development
 
 Project for Team FreshCart CSCB07 Fall 2021
 
